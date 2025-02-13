@@ -1,0 +1,45 @@
+<div class="opened-deck-wrapper" *ngIf="!isDeckEmpty()">
+
+    <div class="card-counter">{{currentCardIndex()}}</div>
+
+    <button class="switch-card-button" id="prev" (click)="prevCard()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="SVGRepo_iconCarrier"> <path d="M9 6L15 12L9 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+        </svg>
+    </button>
+
+    <app-card></app-card>
+
+    <button class="switch-card-button" id="next" (click)="nextCard()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <div class="card-video-wrapper">
+
+        <div *ngIf="this.currentVideo === undefined" class="no-videos">
+            No videos for this card
+        </div>
+
+        <iframe *ngIf="this.currentVideo !== undefined" 
+            [src]="this.currentVideo" 
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+<div class="empty-deck" *ngIf="isDeckEmpty()">
+
+    <h2>
+        <app-translatable-text translateKey="openedDeck.emptyDeck"></app-translatable-text>
+    </h2>
+    <button class="primary-shadow">
+        <app-translatable-text translateKey="openedDeck.createCard"></app-translatable-text>
+    </button>
+
+</div>

@@ -1,0 +1,7 @@
+<div class="card-wrapper" [ngClass]="this.isOnOriginalSide() ? 'card-original-side' : 'card-translate-side'" (click)="cardClicked()">
+
+    <div class="card-words" >
+        <div class="card-word" *ngFor="let word of this.words">{{word}}</div>
+    </div>
+
+</div>

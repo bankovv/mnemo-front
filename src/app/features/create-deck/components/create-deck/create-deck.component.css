@@ -1,0 +1,74 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-deck-wrapper {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 15px;
+}
+
+app-language-selector {
+  width: 80%;
+}
+
+.create-deck-wrapper app-language-selector:nth-of-type(1) {
+  justify-self: flex-end;
+}
+
+.create-deck-wrapper app-language-selector:nth-of-type(2) {
+  justify-self: flex-start;
+}
+
+.divide-icon {
+  display: flex;
+  align-items: center;
+}
+
+.divide-icon svg path:first-child {
+  stroke: var(--secondary-border);
+  fill: var(--tertiary);
+}
+
+.divide-icon svg path:last-child {
+  fill: var(--text-primary);
+}
+
+.inputs-wrapper {
+  grid-column: span 3;
+}
+
+.create-deck-wrapper input {
+  margin: 5px;
+  padding: 10px 5px 10px 10px;
+  background: none;
+  border-radius: 4px;
+  border: 1px solid var(--primary-border);
+}
+
+.create-deck-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--card-original) 30%, var(--card-translate) 90%);
+  border: 1px solid var(--primary-border);
+  padding: 8px 8px 8px 16px;
+  border-radius: 4px;
+  grid-column: span 3;
+  justify-self: center;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+
+.create-deck-button:hover {
+  background: var(--card-translate);
+}
+
+.create-deck-button svg {
+  fill: var(--text-primary);
+}

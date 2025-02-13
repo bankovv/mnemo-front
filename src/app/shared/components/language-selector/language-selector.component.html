@@ -1,0 +1,21 @@
+<div class="languages-selector">
+
+  <div class="selected-language">
+      <img [src]="'./flags/' + selectedLanguage + '.svg'"/>
+      <div class="selected-language-text">{{localeLanguageText(selectedLanguage)}}</div>
+  </div>
+
+  <div class="arrow">
+    <svg width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <ul class="languages-options">
+    <li *ngFor="let lang of this.languages" (click)="selectLanguage(lang)">
+      <img [src]="'./flags/' + lang + '.svg'"/>
+      {{localeLanguageText(lang)}}
+    </li>
+  </ul>
+
+</div>

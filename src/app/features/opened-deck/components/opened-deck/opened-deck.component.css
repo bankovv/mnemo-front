@@ -1,0 +1,108 @@
+:host {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.opened-deck-wrapper {
+
+  align-self: center;
+  display: grid;
+  grid-template-areas: 
+    ". counter ."
+    "prev-button card next-button"
+    "video video video";
+
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 0 20px;
+
+}
+
+.card-counter {
+  grid-area: counter;
+  text-align: center;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+app-card {
+  grid-area: card;
+  justify-self: center;
+}
+
+#prev {
+  grid-area: prev-button;
+}
+
+#next {
+  grid-area: next-button;
+}
+
+.switch-card-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.switch-card-button svg {
+  stroke: var(--text-primary);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.card-video-wrapper {
+  margin-top: 100px;
+  grid-area: video;
+  width: 560px;
+  height: 315px;
+}
+
+.no-videos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  height: 100%;
+  border: 1px solid var(--primary-border);
+  border-radius: 5px;
+}
+
+iframe {
+  width: 560px;
+  height: 315px;
+  border-radius: 5px;
+}
+
+.empty-deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 10px;
+}
+
+.empty-deck h2 app-translatable-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.empty-deck button {
+  background: color-mix(in srgb, var(--card-original) 30%, var(--card-translate) 90%);
+  border: 1px solid var(--primary-border);
+  border: none;
+  color: var(--text-primary);
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+.empty-deck button:hover {
+  background: var(--card-translate);
+}

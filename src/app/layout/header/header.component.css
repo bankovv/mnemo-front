@@ -1,0 +1,27 @@
+.header-wrapper {
+  background: var(--secondary);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-rows: 1fr;
+  position: relative;
+}
+
+.header-logo {
+
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0 15px;
+  color: var(--text-secondary);
+
+}
+
+.header-menu {
+  display: flex;
+  list-style: none;
+}
+
+app-header-account {
+  justify-self: flex-end;
+}

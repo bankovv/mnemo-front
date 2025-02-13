@@ -1,0 +1,83 @@
+.dark-theme {
+
+  --primary: #2D2D2D;
+  --primary: #1E2A38;
+  --primary: #2C3E50;
+
+  /* ТЁПЛЫЕ */
+
+  /* Персиковые */
+  --secondary: #F4A261;
+  --secondary: #FFB74D;
+  /* Персиковые */
+
+  /* Коралловый */
+  --secondary: #FF8A80;
+  /* Коралловый */
+
+  /* ТЁПЛЫЕ */
+
+
+  /* ХОЛОДНЫЕ */
+
+  /* Бирюзовый */
+  --secondary: #4DB6AC !important;
+  --secondary-foreground: #2C3E50;
+  /* Бирюзовый */
+
+  /* Голубой */
+  --secondary: #64B5F6;
+  /* Голубой */
+
+  /* ХОЛОДНЫЕ */
+
+  --secondary: #3A3A47;
+
+
+  --secondary-2: #403F4C;
+  /* --secondary-2: #E8F0FE; */
+  /* --secondary-2: #B2DFDB; */
+  /* --secondary-2: #00796B; */
+  --secondary-gradient: linear-gradient(210deg, #26A69A 10%, var(--secondary));
+  /* --secondary-gradient-foreground: #FFFFFF; */
+  --secondary-gradient-foreground: var(--secondary-foreground);
+  --secondary-gradient-border: #80CBC4;
+  --secondary-gradient-border: #00796B;
+
+  /* Лавандовый */
+  --accent: #9B59B6;
+  /* Лавандовый */
+
+  --accent: #F1C40F;
+
+  --accent: #A3E4D7;
+  --accent-hover: #93e2d2;
+  --accent-foreground: #1A252F;
+  
+
+  --accent-2: #3A86FF;
+
+  --primary-foreground: #F5F5F5;
+  /* --secondary-foreground: #C4C4C4; */
+
+  --primary-border: #818080;
+  --secondary-border: #606060;
+  --accent-border: #2C3E50;
+
+  --tooltip: #2D2D2D;
+  --tooltip-foreground: #F5F5F5;
+
+  --original-card-background: #C5C5C5;
+  --original-card-foreground: #333333;
+  
+  --translate-card-background: #1E1E1E;
+  --translate-card-foreground: #FF6600;
+
+  --warning: #FFAA00;
+  --warning-foreground: #FFFFFF;
+
+  --player-controls: #424242cc;
+  --player-track-full: var(--secondary-foreground);
+  --player-track-progress: var(--accent-2);
+
+}

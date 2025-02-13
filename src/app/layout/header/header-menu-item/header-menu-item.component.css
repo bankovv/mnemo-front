@@ -1,0 +1,21 @@
+.header-menu-item-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 22px 15px;
+  color: var(--secondary-foreground);
+  transition: background 100ms ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  width: fit-content;
+}
+
+.header-menu-item-wrapper:hover:not(.header-menu-item-selected),
+.header-menu-item-wrapper:focus:not(.header-menu-item-selected) {
+  background: var(--secondary-hover);
+  color: var(--secondary-hover-foreground);
+}
+
+.header-menu-item-selected {
+  background: var(--secondary-hover);
+  color: var(--secondary-hover-foreground);
+}

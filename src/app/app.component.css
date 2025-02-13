@@ -1,0 +1,16 @@
+.main-wrapper {
+
+  background: var(--primary);
+  color: var(--primary-foreground);
+
+  height: 100%;
+  padding: 0;
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+}
+
+router-outlet {
+  display: none;
+}

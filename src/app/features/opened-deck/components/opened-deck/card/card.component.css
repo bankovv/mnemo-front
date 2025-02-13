@@ -1,0 +1,40 @@
+:host {
+  --card-width: 300px;
+  --card-height: 150px;
+}
+
+.card-wrapper {
+
+  width: var(--card-width);
+  height: var(--card-height);
+
+  display: grid;
+  border-radius: 6px;
+  transition: background 150ms ease-in-out;
+
+}
+
+.card-original-side {
+  background: var(--card-original);
+}
+
+.card-translate-side {
+  background: var(--card-translate);
+}
+
+.card-words {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-word {
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+.card-word:hover {
+  user-select: text;
+}

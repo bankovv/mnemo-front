@@ -1,0 +1,63 @@
+<div class="registration-wrapper">
+
+  <form [formGroup]="registerForm" class="auth-form">
+
+    <h2 class="auth-header">
+      <app-translatable-text translateKey="registration.signUp"></app-translatable-text>
+    </h2>
+
+    <div class="auth-input">
+
+      <label for="username">
+        <app-translatable-text translateKey="registration.name"></app-translatable-text>
+        <div #invalidUsername class="invalid-credential"></div>
+      </label>
+      <input [ngClass]="{'border-blink': blinkLogin(), 'invalid-input': !loginValid()}" formControlName="login" type="text">
+
+    </div>
+
+    <div class="auth-input">
+
+      <label for="email">
+        <app-translatable-text translateKey="registration.email"></app-translatable-text>
+        <div #invalidEmail class="invalid-credential"></div>
+      </label>
+      <input [ngClass]="{'border-blink': blinkEmail(), 'invalid-input': !emailValid()}" formControlName="email" type="text">
+
+    </div>
+
+    <div class="password-group" formGroupName="passwordGroup">
+
+      <div class="auth-input">
+
+        <label for="password">
+          <app-translatable-text translateKey="registration.password"></app-translatable-text>
+          <div #invalidPassword class="invalid-credential"></div>
+        </label>
+        <input [ngClass]="{'border-blink': blinkPassword(), 'invalid-input': !passwordValid()}" formControlName="password" type="text">
+
+      </div>
+
+      <div class="auth-input">
+
+        <label for="confirmPassword">
+          <app-translatable-text translateKey="registration.confirmPassword"></app-translatable-text>
+          <div #invalidConfirmPassword class="invalid-credential"></div>
+        </label>
+        <input [ngClass]="{'border-blink': blinkConfirmPassword(), 'invalid-input': !confirmPasswordValid()}" formControlName="confirmPassword" type="text">
+
+      </div>
+
+    </div>
+
+    <div class="submit-wrapper">
+
+      <button class="submit-button" type="button" (click)="submitForm()">
+        <app-translatable-text translateKey="registration.submit"></app-translatable-text>
+      </button>
+      <div #registrationErrorMessage class="registration-error-message"></div>
+    </div>
+
+  </form>
+
+</div>

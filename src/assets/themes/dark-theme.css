@@ -1,0 +1,25 @@
+.dark-theme {
+
+  --text-primary: #ececec;
+  --text-secondary: #cecece;
+
+  --primary: #212121;
+  --primary-border: #999999;
+
+  --primary-hover: #292929;
+
+  --secondary: #171717;
+  --secondary-border: #777777;
+
+  --secondary-hover: #212121;
+
+  --tertiary: #303030;
+
+  --tertiary-hover: #393939;
+
+  --warning-border: #C41E3A;
+
+  --card-original: #2C2D5A;
+  --card-translate: #AA3E67;
+
+}

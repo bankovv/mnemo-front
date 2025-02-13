@@ -1,0 +1,24 @@
+:host {
+  display: grid;
+}
+
+.login-wrapper {
+  color: var(--secondary-gradient-foreground);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 400px;
+}
+
+.login-button-wrapper {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.login-invalid-message {
+  font-size: 0.9rem;
+  color: var(--warning-foreground);
+}

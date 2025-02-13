@@ -1,0 +1,39 @@
+<div class="login-wrapper">
+
+  <form [formGroup]="loginForm" class="auth-form">
+
+    <h2 class="auth-header">
+      <app-translatable-text translateKey="login.signIn"></app-translatable-text>
+    </h2>
+
+    <div class="auth-input">
+
+      <label for="username">
+        <app-translatable-text translateKey="login.loginOrEmail"></app-translatable-text>
+      </label>
+      <input [ngClass]="{'border-blink': loginBlink()}" type="text" formControlName="login">
+
+    </div>
+
+    <div class="auth-input">
+
+      <label for="password">
+        <app-translatable-text translateKey="login.password"></app-translatable-text>
+      </label>
+      <input [ngClass]="{'border-blink': passwordBlink()}" type="text" formControlName="password">
+
+    </div>
+
+    <div class="login-button-wrapper">
+
+      <button class="submit-button" (click)="login()" type="submit">
+        <app-translatable-text translateKey="login.submit"></app-translatable-text>
+      </button>
+
+      <div #invalidCredentialsMessage class="login-invalid-message"></div>
+
+    </div>
+
+  </form>
+
+</div>

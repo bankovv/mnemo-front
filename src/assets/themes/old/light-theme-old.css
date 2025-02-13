@@ -1,0 +1,70 @@
+.light-theme {
+
+  /* --primary: #F0F0F0;
+  --secondary: #E0E0E0;
+  --accent: #F0A500;
+
+  --primary-secondary: color-mix(in srgb, var(--primary) 75%, var(--secondary) 25%);
+
+  --primary-foreground: #333333;
+  --secondary-foreground: #555555;
+  --accent-foreground: #FFFFFF;
+
+  --primary-border: #CCCCCC;
+  --secondary-border: #CCCCCC;
+  --accent-border: #F0F0F0;
+
+  --tooltip: color-mix(in srgb, var(--secondary) 100%, white 50%);
+  --tooltip-foreground: var(--secondary-foreground);
+
+  --original-card-background: #F9C9D3;
+  --original-card-foreground: #000000;
+  --translate-card-background: #E2E6F0;
+  --translate-card-foreground: #000000;
+ */
+
+
+
+  /* --primary: #FFFFFF;
+  --primary-foreground: #2C3E50;
+
+  --secondary: #FF7043;
+  --secondary-foreground: #FFFFFF;
+
+  --secondary-2: #F5F5F5;
+
+  --secondary-gradient: linear-gradient(210deg, #FF7043 50%, var(--secondary));
+  --secondary-gradient-foreground: var(--secondary-foreground);
+  --secondary-gradient-border: #FF5722;
+
+  --accent: #FFEB3B;
+  --accent-hover: #FBC02D;
+  --accent-foreground: #2C3E50;
+
+  --accent-border: #FF5722;
+
+  --accent-2: #FF4081;
+ */
+
+  --primary: #F5F5F5;
+  --primary-foreground: #2C3E50;
+
+  --secondary: #B0BEC5;
+  --secondary-foreground: #2C3E50;
+
+  --secondary-2: #ECEFF1;
+
+  --secondary-gradient: linear-gradient(210deg, #B0BEC5 50%, var(--secondary));
+  --secondary-gradient-hover: color-mix(in srgb, var(--secondary) 80%, black 20%);
+  --secondary-gradient-foreground: var(--secondary-foreground);
+  --secondary-gradient-border: #78909C;
+
+  --accent: #A5D6A7;
+  --accent-hover: #81C784;
+  --accent-foreground: #1A252F;
+
+  --accent-border: #4CAF50;
+
+  --accent-2: #90CAF9;
+
+}

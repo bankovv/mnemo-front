@@ -1,0 +1,165 @@
+:host {
+  --deck-width: 300px;
+  --deck-height: 150px;
+}
+
+.deck-wrapper {
+
+  background-color: var(--tertiary);
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  border: 1px solid var(--primary-border);
+  border-radius: 8px;
+
+  width: var(--deck-width);
+  height: var(--deck-height);
+
+  padding: 5px;
+  gap: 8px;
+  position: relative;
+
+  cursor: pointer;
+  transition: background 150ms ease-in-out;
+
+}
+
+.deck-wrapper:hover {
+  background: var(--secondary);
+}
+
+.deck-options-button {
+
+  background: none;
+  border: none;
+  padding: 6px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  cursor: pointer;
+
+}
+
+.deck-options-button svg {
+  fill: var(--text-secondary);
+  width: 12px;
+  height: 12px;
+}
+
+.deck-public-id {
+
+  display: flex;
+  justify-content: flex-end;
+
+  color: transparent;
+  transition: color 100ms ease;
+  font-size: 0.9rem;
+
+}
+
+.deck-name {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: fit-content;
+
+  font-size: 1.1rem;
+
+}
+
+.deck-languages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  gap: 8px;
+}
+
+.deck-languages img {
+  width: 15px;
+  height: 15px;
+}
+
+.divide-icon {
+  display: flex;
+  align-items: center;
+}
+
+.divide-icon svg path:f-vbirst-child {
+  stroke: var(--primar+y-border);
+  fill: var(--tertiary);
+}
+
+.divide-icon svg path:last-child {
+  fill: var(--text-primary);
+}
+
+.deck-options-button:hover svg {
+  fill: var(--text-primary);
+}
+
+.deck-info {
+
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  cursor: text;
+  width: fit-content;
+  height: fit-content;
+  justify-self: center;
+
+}
+
+.deck-options-menu {
+
+  display: none;
+  background: var(--secondary);
+  color: var(text-secondary);
+  border-radius: 5px;
+  width: fit-content;
+  position: absolute;
+  border: 1px solid var(--primary-border);
+  padding: 5px 0;
+  z-index: 333;
+
+}
+
+.deck-option {
+  display: flex;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.deck-option-icon {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.deck-option-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-fill {
+  fill: var(--text-secondary);
+}
+
+.icon-stroke {
+  stroke: var(--text-secondary);
+}
+
+.deck-option:hover {
+  background: var(--secondary-hover);
+}
+
+.deck-option button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+}

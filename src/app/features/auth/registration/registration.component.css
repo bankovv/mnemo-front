@@ -1,0 +1,60 @@
+:host {
+  display: grid;
+}
+
+.registration-wrapper {
+  color: var(--secondary-gradient-foreground);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 400px;
+}
+
+.registration-form h2 {
+  margin-bottom: 10px;
+  letter-spacing: 1.3px;
+  font-weight: normal;
+}
+
+.auth-input label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.invalid-credential {
+
+  color: var(--warning-foreground);
+  font-size: 0.8rem;
+
+}
+
+.auth-input .invalid-input,
+.auth-input .invalid-input:focus {
+  border-color: var(--warning-border);
+}
+
+.password-group {
+  display: contents;
+}
+
+.submit-wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  height: 100%;
+}
+
+.submit-wrapper button {
+  align-self: center;
+}
+
+.registration-error-message {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: var(--warning-foreground);
+  font-size: 0.9rem;
+}
