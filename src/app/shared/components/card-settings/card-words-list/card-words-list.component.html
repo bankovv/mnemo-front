@@ -1,1 +1,35 @@
-<p>card-words-list works!</p>
+<div class="card-words-list-wrapper">
+
+  <div class="title-wrapper">
+    <h3>langName</h3>
+    <img [src]="'./flags/' + 'english' + '.svg'">
+  </div>
+
+  <div class="add-word-wrapper">
+    <input type="text">
+    <button>add</button>
+  </div>
+
+  <ul>
+    <li class="card-word-cell">
+      <div class="card-word">word1</div>
+      <button class="remove-word-button">
+        remove
+      </button>
+    </li>
+    <li class="card-word-cell">
+      <div class="card-word">word2</div>
+      <button class="remove-word-button">
+        remove
+      </button>
+    </li>
+     <li class="card-word-cell">
+      <div class="card-word">word3</div>
+      <button class="remove-word-button">
+        remove
+      </button>
+    </li>
+ 
+  </ul>
+
+</div>

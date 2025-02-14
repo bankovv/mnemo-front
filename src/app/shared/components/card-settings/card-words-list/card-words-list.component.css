@@ -1,0 +1,33 @@
+.card-words-list-wrapper {
+
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title-wrapper img {
+  width: 16px;
+  height: 16px;
+}
+
+.add-word-wrapper {
+  display: flex;
+}
+
+.add-word-wrapper input {
+  width: 100%;
+}
+
+ul {
+  overflow-y: auto;
+}
+
+.card-word-cell {
+  display: flex;
+}
+
+.card-word {
+  width: 100%;
+}
