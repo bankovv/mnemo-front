@@ -1,10 +1,33 @@
 .card-words-list-wrapper {
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 15px 0;
+  gap: 6px;
+
+  background: var(--card-original);
+  border: 1px solid var(--secondary-border);
+  border-radius: 4px;
+  width: 300px;
+
 }
 
 .title-wrapper {
+
   display: flex;
   align-items: center;
+  /* align-self: start; */
+
+  gap: 8px;
+  padding: 6px 15px;
+
+}
+
+.title-wrapper h3 {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
 }
 
 .title-wrapper img {
@@ -13,21 +36,69 @@
 }
 
 .add-word-wrapper {
+
   display: flex;
+
+  border: 1px solid var(--secondary-border);
+  border-radius: 2px;
+
+  width: 90%;
+  padding: 3px 10px;
+  padding-right: 3px;
+
 }
 
 .add-word-wrapper input {
+
+  background: none;
+  border: none;
+
   width: 100%;
+
+}
+
+.add-word-wrapper button {
+
+  display: flex;
+  align-items: center;
+
+  background: none;
+  border: none;
+
+}
+
+.add-word-wrapper button svg {
+  stroke: var(--text-secondary);
 }
 
 ul {
   overflow-y: auto;
+  width: 100%;
 }
 
 .card-word-cell {
   display: flex;
+  padding: 5px 10px;
+  transition: background 50ms ease-in-out;
+}
+
+.card-word-cell:hover {
+  background: var(--tertiary);
 }
 
 .card-word {
   width: 100%;
+}
+
+.remove-word-button {
+  background: none;
+  border: none;
+}
+
+.remove-word-button svg {
+  stroke: var(--text-secondary);
+}
+
+.remove-word-button:hover svg path {
+  stroke-width: 2.5;
 }
