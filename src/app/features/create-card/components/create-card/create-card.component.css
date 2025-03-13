@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-card-wrapper {
+
+  display: grid;
+  align-items: center;
+  justify-content: space-around;
+  grid-template-columns: 1fr auto;
+
+  width: fit-content;
+  height: 100%;
+
+}
+
+.create-card-button {
+
+  display: flex;
+  gap: 10px;
+
+  background: var(--card-translate);
+  border: var(--primary-border);
+  border-radius: 4px;
+
+  padding: 10px;
+  margin-left: 20px;
+  height: fit-content;
+
+  transition: background 100ms ease-in;
+
+}
+
+.create-card-button:hover {
+  background: color-mix(in srgb, var(--card-translate), var(--card-original) 10%);
+}
+
+.create-card-button svg {
+  stroke: var(--text-primary);
+}
