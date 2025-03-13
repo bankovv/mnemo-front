@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../../opened-deck/services/opened-deck.service';
 import { DeckModel } from '../../../../shared/models/decks/deck.model';
 import { CardModel } from '../../../../shared/models/decks/card.model';
+import { CardSettingsComponent } from '../../../../shared/components/card-settings/card-settings.component';
 
 @Component({
   selector: 'app-create-card',
@@ -11,6 +12,9 @@ import { CardModel } from '../../../../shared/models/decks/card.model';
 export class CreateCardComponent {
 
   private deckService = inject(OpenedDeckService);
+
+  @ViewChild('cardSettings')
+  public cardSettings!: CardSettingsComponent;
 
   public deck!: DeckModel;
   public card!: CardModel;
@@ -27,6 +31,23 @@ export class CreateCardComponent {
       videoUrls: undefined!,
       createdAt: new Date()
     }
+
+  }
+
+  public createCardButtonClicked() {
+
+    var valid = true;
+    if (this.card.wordsOriginal.length === 0) {
+      this.cardSettings.blinkOriginalWordsList();
+      valid = false;
+    }
+
+    if (this.card.wordsTranslate.length === 0) {
+      this.cardSettings.blinkTranslateWordsList();
+      valid = false;
+    }
+
+    if (!valid) return;
 
   }
 
