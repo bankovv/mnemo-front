@@ -3,6 +3,7 @@ import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { RoutingService } from '../../../../core/services/routing.service';
 
 @Component({
   selector: 'app-opened-deck',
@@ -13,6 +14,7 @@ export class OpenedDeckComponent {
 
   private deckService = inject(OpenedDeckService);
   private videosService = inject(CardVideosFacadeService);
+  public routingService = inject(RoutingService);
   private domSanitizer = inject(DomSanitizer);
 
   public currentVideo: SafeResourceUrl | undefined = undefined;
@@ -43,6 +45,10 @@ export class OpenedDeckComponent {
 
   public nextCard() {
     this.deckService.nextCard();
+  }
+
+  public createCardButtonPressed() {
+    this.routingService.navigate(['deck', this.deckService.currentDeck.deckPublicId, 'create-card']);
   }
 
   public isDeckEmpty(): boolean {
