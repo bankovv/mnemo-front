@@ -1,6 +1,6 @@
 <div class="card-settings-wrapper">
 
-  <app-card-words-list [deck]="deck" [card]="card" [isOriginalLanguage]="true"></app-card-words-list>
-  <app-card-words-list [deck]="deck" [card]="card" [isOriginalLanguage]="false"></app-card-words-list>
+  <app-card-words-list #original [deck]="deck" [card]="card" [isOriginalLanguage]="true"></app-card-words-list>
+  <app-card-words-list #translate [deck]="deck" [card]="card" [isOriginalLanguage]="false"></app-card-words-list>
 
 </div>

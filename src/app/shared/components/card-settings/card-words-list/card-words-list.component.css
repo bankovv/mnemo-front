@@ -12,6 +12,8 @@
   border-radius: 4px;
   width: 300px;
 
+  transition: border-color 250ms ease-in-out;
+
 }
 
 .title-wrapper {
@@ -101,4 +103,8 @@ ul {
 
 .remove-word-button:hover svg path {
   stroke-width: 2.5;
+}
+
+.blinking-warning {
+  border-color: var(--warning-border);
 }

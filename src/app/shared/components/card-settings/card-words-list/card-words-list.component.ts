@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { DeckModel } from '../../../models/decks/deck.model';
 import { CardModel } from '../../../models/decks/card.model';
 
@@ -18,6 +18,9 @@ export class CardWordsListComponent {
 
   @ViewChild('addWord')
   public addWordInput!: ElementRef;
+
+  private blinkWarningInterval = 150;
+  public isBlinkingWarning = signal(false);
 
   public addWordButtonClicked() {
     this.addWord(this.addWordInput.nativeElement.value);
@@ -41,6 +44,23 @@ export class CardWordsListComponent {
 
   public get language() {
     return this.isOriginalLanguage ? this.deck.languageOriginal : this.deck.languageTranslate;
+  }
+
+  public async blinkWarning() {
+    if (this.isBlinkingWarning()) return;
+    await this.blink();
+    await this.sleep(this.blinkWarningInterval);
+    await this.blink();
+  }
+  
+  private async blink() {
+    this.isBlinkingWarning.set(true);
+    await this.sleep(this.blinkWarningInterval);
+    this.isBlinkingWarning.set(false);
+  }
+
+  private async sleep(ms: number) {
+    await new Promise<void>(res => setTimeout(() => res(), ms))
   }
 
 }

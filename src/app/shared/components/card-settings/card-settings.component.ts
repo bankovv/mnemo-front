@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal, ViewChild } from '@angular/core';
 import { DeckModel } from '../../models/decks/deck.model';
 import { CardModel } from '../../models/decks/card.model';
+import { CardWordsListComponent } from './card-words-list/card-words-list.component';
 
 @Component({
   selector: 'app-card-settings',
@@ -11,9 +12,13 @@ export class CardSettingsComponent {
 
   @Input('deck')
   public deck!: DeckModel;
-
   @Input('card')
   public card!: CardModel;
+
+  @ViewChild('original')
+  public orginalList!: CardWordsListComponent;
+  @ViewChild('translate')
+  public translateList!: CardWordsListComponent;
 
   constructor() {
 
@@ -35,6 +40,14 @@ export class CardSettingsComponent {
       createdAt: undefined!
     }
 
+  }
+
+  public blinkOriginalWordsList() {
+    this.orginalList.blinkWarning();
+  }
+
+  public blinkTranslateWordsList() {
+    this.translateList.blinkWarning();
   }
 
 }
