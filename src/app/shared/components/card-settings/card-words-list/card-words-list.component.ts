@@ -43,6 +43,7 @@ export class CardWordsListComponent {
   }
 
   public get language() {
+    if (!this.deck) return '';
     return this.isOriginalLanguage ? this.deck.languageOriginal : this.deck.languageTranslate;
   }
 

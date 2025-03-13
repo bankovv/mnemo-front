@@ -1,8 +1,9 @@
 .card-settings-wrapper {
 
   display: grid;
-  grid-template-columns: max-content max-content;
   justify-content: center;
+  align-items: center;
+  grid-template-columns: max-content max-content;
   gap: 50px;
   width: fit-content;
 
