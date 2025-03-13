@@ -1,4 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { DeckModel } from '../../../models/decks/deck.model';
+import { CardModel } from '../../../models/decks/card.model';
 
 @Component({
   selector: 'app-card-words-list',
@@ -7,18 +9,15 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class CardWordsListComponent {
 
+  @Input('deck')
+  public deck!: DeckModel;
+  @Input('card')
+  public card!: CardModel;
+  @Input('isOriginalLanguage')
+  public isOriginalLanguage!: boolean;
+
   @ViewChild('addWord')
   public addWordInput!: ElementRef;
-
-  public words: string[] = [];
-
-  ngOnInit() {
-
-    this.words.push('word1');
-    this.words.push('word2');
-    this.words.push('word3');
-
-  }
 
   public addWordButtonClicked() {
     this.addWord(this.addWordInput.nativeElement.value);
@@ -34,6 +33,14 @@ export class CardWordsListComponent {
       return;
     this.words.push(word);
     this.addWordInput.nativeElement.value = '';
+  }
+
+  public get words() {
+    return this.isOriginalLanguage ? this.card.wordsOriginal : this.card.wordsTranslate;
+  }
+
+  public get language() {
+    return this.isOriginalLanguage ? this.deck.languageOriginal : this.deck.languageTranslate;
   }
 
 }
