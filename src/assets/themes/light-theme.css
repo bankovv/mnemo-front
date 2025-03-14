@@ -1,26 +1,27 @@
 .light-theme {
-
   --text-primary: #131313;
   --text-secondary: #5d5d5d;
 
   --primary: #ffffff;
-  --primary-border: #dcdcdc;
+  --primary-border: #9c9494;
 
   --primary-hover: #e0e0e0;
 
-  --secondary: #f5f5f5;
+  --secondary: #e0e0e0;
   --secondary-border: #bdbdbd;
 
-  --secondary-hover: #cccccc;
+  --secondary-hover: #d5d5d5;
 
-  --tertiary: #fafafa;
-
+  --tertiary: #f4f4f4;
+  
   --tertiary-hover: #e0e0e0;
-
+  
   --warning-border: #F44336;
 
   --card-original: #D0D4F2;
   --card-translate: #F0A3B1;
 
+  --accent: #F48FB1;
+  --accent-hover: #F0A3B1;
 
 }

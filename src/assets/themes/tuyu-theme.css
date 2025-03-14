@@ -39,6 +39,7 @@
   --card-translate: var(--sky-magenta);
 
   --accent: var(--sky-magenta-agressive);
+  --accent-hover: color-mix(in srgb, var(--sky-magenta-agressive) 80%, var(--sky-magenta));
 
   /* background: radial-gradient(circle at 10% 10%, rgba(36, 33, 59, 0.9), rgba(24, 25, 45, 0.7)),
   linear-gradient(135deg, rgba(42, 40, 68, 0.6) 0%, rgba(24, 25, 45, 1) 100%),
@@ -82,9 +83,4 @@
 
   background-blend-mode: overlay, multiply, normal !important;
 
-}
-
-.primary-shadow {
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.6);
-  border-radius: 4px;
 }

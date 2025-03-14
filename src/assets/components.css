@@ -9,3 +9,8 @@
 .accent-button:hover {
   background: var(--accent-hover);
 }
+
+.primary-shadow {
+  box-shadow: 0 2px 4px var(--secondary);
+  border-radius: 4px;
+}
