@@ -1,13 +1,18 @@
 .tuyu-theme {
 
   --delft-blue: #423E68;
+  --delft-blue: #2D2E5B;
+
   --space-cadet: #25243F;
   --french-gray: #CEC8CC;
   --space-cadet-2: #39314F;
   --oxford-blue: #18192D;
   --dark-purple: #30243D;
   --timberwolf: #E8DCD9;
+
   --sky-magenta: #B76896;
+  --sky-magenta: #B02459;
+
   --ultra-violet: #534E73;
   --ecru: #C8B57E;
 
@@ -67,13 +72,13 @@
     linear-gradient(0deg, rgba(48, 36, 61, 0.4), transparent 70%),
     linear-gradient(180deg, rgba(57, 49, 79, 0.3), transparent 60%),
     radial-gradient(ellipse at 10% 50%, rgba(66, 62, 104, 0.2), transparent 50%),
-    radial-gradient(ellipse at 90% 50%, rgba(83, 78, 115, 0.2), transparent 50%),
+    /* radial-gradient(ellipse at 90% 50%, rgba(83, 78, 115, 0.2), transparent 50%), */
     radial-gradient(ellipse at 50% 50%, rgba(57, 49, 79, 0.15), transparent 60%),
     radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.03), transparent 50%),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.03), transparent 50%),
     radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.05), transparent 50%) !important;
   
   background-blend-mode: overlay, multiply, normal !important;
-  filter: contrast(1.2) brightness(0.9);
 
 }
 
