@@ -29,6 +29,11 @@ export class RoutingService {
     this.onRouteChangeList.push(onChange);
   }
 
+  public offRouteChange(onChange: (event: NavigationEnd) => void) {
+    const index = this.onRouteChangeList.indexOf(onChange);
+    this.onRouteChangeList.splice(index, 1);
+  }
+
   public reload() {
     this.router.navigate([this.router.url]);
   }
