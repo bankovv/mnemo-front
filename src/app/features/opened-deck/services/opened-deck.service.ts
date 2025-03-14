@@ -55,8 +55,18 @@ export class OpenedDeckService {
     this.deckChangeListeners.push(onChange);
   }
 
+  public offDeckChange(onChange: (deck: DeckModel, cards: CardModel[]) => void) {
+    const index = this.deckChangeListeners.indexOf(onChange);
+    this.deckChangeListeners.splice(index, 1);
+  }
+
   public onCurrentCardChange(onChange: (card: CardModel) => void) {
     this.currentCardChangeListeners.push(onChange);
+  }
+
+  public offCurrentCardChange(onChange: (card: CardModel) => void) {
+    const index = this.currentCardChangeListeners.indexOf(onChange);
+    this.currentCardChangeListeners.splice(index, 1);
   }
 
   // Setters
