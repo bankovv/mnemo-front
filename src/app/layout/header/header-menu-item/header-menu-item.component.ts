@@ -16,7 +16,7 @@ export class HeaderMenuItemComponent {
   private routingService = inject(RoutingService);
 
   constructor() {
-    this.routingService.addOnRouteChange(event => {
+    this.routingService.onRouteChange(event => {
       if (event.url !== this.routerLink) this.selected.set(false);
       else this.selected.set(true);
     });

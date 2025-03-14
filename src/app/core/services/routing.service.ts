@@ -25,7 +25,7 @@ export class RoutingService {
 
   }
 
-  public addOnRouteChange(onChange: (event: NavigationEnd) => void) {
+  public onRouteChange(onChange: (event: NavigationEnd) => void) {
     this.onRouteChangeList.push(onChange);
   }
 

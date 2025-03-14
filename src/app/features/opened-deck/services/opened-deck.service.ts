@@ -25,7 +25,7 @@ export class OpenedDeckService {
   private _currentCardIndex: number = 0;
 
   constructor() {
-    this.routingService.addOnRouteChange(ev => {
+    this.routingService.onRouteChange(ev => {
       const url = ev.url.split('/');
       if (url[1] === 'deck') {
         this.setCurrentDeck(url[2]);
