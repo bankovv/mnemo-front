@@ -9,6 +9,7 @@
   align-self: center;
   display: grid;
   grid-template-areas: 
+    "header header header"
     ". counter ."
     "prev-button card next-button"
     "video video video";
@@ -20,7 +21,29 @@
   justify-content: center;
 
   gap: 0 20px;
+  height: 100%;
 
+}
+
+.opened-deck-header {
+
+  grid-area: header;
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 1fr auto 1fr;
+
+  background: var(--secondary);
+  border: 1px solid var(--secondary-border);
+
+  padding: 20px;
+  border-radius: 8px;
+
+}
+
+.deck-title {
+  font-weight: bold;
+  text-align: center;
 }
 
 .card-counter {

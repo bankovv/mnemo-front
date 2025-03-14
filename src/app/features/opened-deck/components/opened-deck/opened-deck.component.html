@@ -1,5 +1,15 @@
 <div class="opened-deck-wrapper" *ngIf="!isDeckEmpty()">
 
+    <div class="opened-deck-header">
+
+        <div class="deck-options"></div>
+
+        <div class="deck-title">name</div>
+
+        <div class="deck-actions"></div>
+
+    </div>
+
     <div class="card-counter">{{currentCardIndex()}}</div>
 
     <button class="switch-card-button" id="prev" (click)="prevCard()">
