@@ -3,9 +3,7 @@ import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { RoutingService } from '../../../../core/services/routing.service';
 import { CardComponent } from './card/card.component';
-import { DeckModel } from '../../../../shared/models/decks/deck.model';
 
 @Component({
   selector: 'app-opened-deck',
@@ -16,13 +14,14 @@ export class OpenedDeckComponent {
 
   private deckService = inject(OpenedDeckService);
   private videosService = inject(CardVideosFacadeService);
-  private routingService = inject(RoutingService);
   private domSanitizer = inject(DomSanitizer);
 
   private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
 
   @ViewChild('card')
   public card!: CardComponent;
+  @ViewChild('createCardDialog')
+  public createCardDialog!: ElementRef;
 
   public currentVideo: SafeResourceUrl | undefined = undefined;
   public currentCardIndex = signal('');
@@ -68,8 +67,8 @@ export class OpenedDeckComponent {
     this.deckService.nextCard();
   }
 
-  public createCardButtonPressed() {
-    this.routingService.navigate(['deck', this.deckService.currentDeck.deckPublicId, 'create-card']);
+  public createCardButtonClicked() {
+    this.createCardDialog.nativeElement.showModal();
   }
 
   public isDeckEmpty(): boolean {

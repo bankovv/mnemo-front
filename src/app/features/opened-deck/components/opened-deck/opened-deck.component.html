@@ -22,7 +22,8 @@
 
         <div class="deck-title">{{deckName}}</div>
 
-        <div class="deck-actions"></div>
+        <div class="deck-actions">
+        </div>
 
     </div>
 
@@ -64,8 +65,12 @@
     <h2>
         <app-translatable-text translateKey="openedDeck.emptyDeck"></app-translatable-text>
     </h2>
-    <button class="accent-button" (click)="createCardButtonPressed()">
+    <button class="accent-button" (click)="createCardButtonClicked()">
         <app-translatable-text translateKey="openedDeck.createCard"></app-translatable-text>
     </button>
 
 </div>
+
+<dialog #createCardDialog class="create-card-dialog">
+    <app-create-card></app-create-card>
+</dialog>

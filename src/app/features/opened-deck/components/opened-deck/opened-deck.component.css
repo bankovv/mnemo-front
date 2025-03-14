@@ -153,3 +153,21 @@ iframe {
   color: var(--text-secondary);
   font-size: 1.1rem;
 }
+
+.create-card-dialog {
+
+  background: var(--secondary);
+  border: 1px solid var(--primary-border);
+  border-radius: 4px;
+  padding: 50px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрирование */
+
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
