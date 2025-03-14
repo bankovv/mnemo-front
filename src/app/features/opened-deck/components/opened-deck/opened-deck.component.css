@@ -93,16 +93,3 @@ iframe {
   color: var(--text-secondary);
   font-size: 1.1rem;
 }
-
-.empty-deck button {
-  background: color-mix(in srgb, var(--card-original) 30%, var(--card-translate) 90%);
-  border: 1px solid var(--primary-border);
-  border: none;
-  color: var(--text-primary);
-  padding: 10px 16px;
-  border-radius: 4px;
-}
-
-.empty-deck button:hover {
-  background: var(--card-translate);
-}

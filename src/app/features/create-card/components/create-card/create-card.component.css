@@ -21,20 +21,9 @@
   display: flex;
   gap: 10px;
 
-  background: var(--card-translate);
-  border: var(--primary-border);
-  border-radius: 4px;
-
-  padding: 10px;
   margin-left: 20px;
   height: fit-content;
 
-  transition: background 100ms ease-in;
-
-}
-
-.create-card-button:hover {
-  background: color-mix(in srgb, var(--card-translate), var(--card-original) 10%);
 }
 
 .create-card-button svg {

@@ -54,19 +54,9 @@ app-language-selector {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: color-mix(in srgb, var(--card-original) 30%, var(--card-translate) 90%);
-  border: 1px solid var(--primary-border);
-  padding: 8px 8px 8px 16px;
-  border-radius: 4px;
   grid-column: span 3;
   justify-self: center;
   margin-top: 5px;
-  cursor: pointer;
-  transition: background 200ms ease;
-}
-
-.create-deck-button:hover {
-  background: var(--card-translate);
 }
 
 .create-deck-button svg {
