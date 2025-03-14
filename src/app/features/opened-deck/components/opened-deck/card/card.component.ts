@@ -1,7 +1,5 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../../services/opened-deck.service';
-import { DeckModel } from '../../../../../shared/models/decks/deck.model';
-import { CardModel } from '../../../../../shared/models/decks/card.model';
 
 @Component({
   selector: 'app-card',
@@ -11,14 +9,25 @@ import { CardModel } from '../../../../../shared/models/decks/card.model';
 export class CardComponent {
 
   private deckService = inject(OpenedDeckService);
+  private deckChangeListener = this.updateWords.bind(this);
+  private cardChangeListener = this.updateWords.bind(this);
 
   public words: string[] = [];
   public isOnOriginalSide = this.deckService.isOnOriginalSideSignal;
 
   ngOnInit() {
-    this.deckService.onDeckChange((deck: DeckModel, cards: CardModel[]) => this.updateWords());
-    this.deckService.onCurrentCardChange((card: CardModel) => this.updateWords());
+    this.deckService.onDeckChange(this.deckChangeListener);
+    this.deckService.onCurrentCardChange(this.cardChangeListener);
     this.updateWords();
+  }
+
+  ngAfterViewInit() {
+    this.updateWords();
+  }
+
+  ngOnDestroy() {
+    this.deckService.offDeckChange(this.deckChangeListener);
+    this.deckService.offCurrentCardChange(this.cardChangeListener);
   }
 
   public cardClicked() {

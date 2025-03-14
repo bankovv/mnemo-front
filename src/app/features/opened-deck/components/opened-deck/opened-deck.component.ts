@@ -14,27 +14,33 @@ export class OpenedDeckComponent {
 
   private deckService = inject(OpenedDeckService);
   private videosService = inject(CardVideosFacadeService);
-  public routingService = inject(RoutingService);
+  private routingService = inject(RoutingService);
   private domSanitizer = inject(DomSanitizer);
+
+  private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
 
   public currentVideo: SafeResourceUrl | undefined = undefined;
   public currentCardIndex = signal('');
 
   ngOnInit() {
+    this.deckService.onCurrentCardChange(this.cardChangeListener);
+  }
 
-    this.deckService.onCurrentCardChange((card: CardModel) => {
+  ngOnDestroy() {
+    this.deckService.offCurrentCardChange(this.cardChangeListener);
+  }
 
-      if (!card) return;
-      this.currentCardIndex.set(`${this.deckService.currentCardIndex + 1} / ${this.deckService.cards.length}`);
+  private onCardChange(card: CardModel) {
 
-      this.videosService.getVideos(card.cardId).subscribe(videos => {
-        if (videos.length > 0) {
-          this.currentVideo = this.domSanitizer.bypassSecurityTrustResourceUrl(videos[0]);
-        } else {
-          this.currentVideo = undefined;
-        }
-      });
+    if (!card) return;
+    this.currentCardIndex.set(`${this.deckService.currentCardIndex + 1} / ${this.deckService.cards.length}`);
 
+    this.videosService.getVideos(card.cardId).subscribe(videos => {
+      if (videos.length > 0) {
+        this.currentVideo = this.domSanitizer.bypassSecurityTrustResourceUrl(videos[0]);
+      } else {
+        this.currentVideo = undefined;
+      }
     });
 
   }
