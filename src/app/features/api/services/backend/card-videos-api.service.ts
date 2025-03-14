@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../config/api-config';
 import { Observable } from 'rxjs';
-import { CardVideosResponse } from '../../dtos/card-videos-response.dto';
+import { CardVideosResponse } from '../../dtos/cards/card-videos-response.dto';
 
 @Injectable({
   providedIn: 'root'

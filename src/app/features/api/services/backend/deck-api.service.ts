@@ -4,7 +4,7 @@ import { API_CONFIG } from '../../config/api-config';
 import { Observable } from 'rxjs';
 import { DecksPageResponse } from '../../dtos/decks/decks-page-response.dto';
 import { DeckResponse } from '../../dtos/decks/deck-response.dto';
-import { CardsResponse } from '../../dtos/decks/cards-response.dto';
+import { CardsResponse } from '../../dtos/cards/cards-response.dto';
 import { DeckCreateResponse } from '../../dtos/decks/create/deck-create-response.dto';
 import { DeckCreateRequest } from '../../dtos/decks/create/deck-create-request.dto';
 

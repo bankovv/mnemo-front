@@ -5,7 +5,7 @@ import { DecksPageModel } from '../../../../shared/models/decks/decks-page.model
 import { DecksPageResponse } from '../../dtos/decks/decks-page-response.dto';
 import { DeckModel } from '../../../../shared/models/decks/deck.model';
 import { CardModel } from '../../../../shared/models/decks/card.model';
-import { CardsResponse } from '../../dtos/decks/cards-response.dto';
+import { CardsResponse } from '../../dtos/cards/cards-response.dto';
 import { DeckCreateResponse } from '../../dtos/decks/create/deck-create-response.dto';
 import { DeckCreateRequest } from '../../dtos/decks/create/deck-create-request.dto';
 
