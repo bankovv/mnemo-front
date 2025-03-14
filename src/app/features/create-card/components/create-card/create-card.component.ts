@@ -3,6 +3,9 @@ import { OpenedDeckService } from '../../../opened-deck/services/opened-deck.ser
 import { DeckModel } from '../../../../shared/models/decks/deck.model';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardSettingsComponent } from '../../../../shared/components/card-settings/card-settings.component';
+import { DeckFacadeService } from '../../../api/services/facades/deck-facade.service';
+import { CardCreateResponse } from '../../../api/dtos/cards/create/card-create-response.dto';
+import { RoutingService } from '../../../../core/services/routing.service';
 
 @Component({
   selector: 'app-create-card',
@@ -12,6 +15,8 @@ import { CardSettingsComponent } from '../../../../shared/components/card-settin
 export class CreateCardComponent {
 
   private deckService = inject(OpenedDeckService);
+  private routingService = inject(RoutingService);
+  private deckFacadeService = inject(DeckFacadeService);
 
   @ViewChild('cardSettings')
   public cardSettings!: CardSettingsComponent;
@@ -48,6 +53,11 @@ export class CreateCardComponent {
     }
 
     if (!valid) return;
+    this.deckFacadeService.createCard(
+      this.deck.deckPublicId, this.card.wordsOriginal, this.card.wordsTranslate
+    ).subscribe((resp: CardCreateResponse) => {
+      this.routingService.navigate(['deck', this.deck.deckPublicId]);
+    });
 
   }
 
