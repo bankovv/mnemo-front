@@ -61,4 +61,9 @@ export class OpenedDeckComponent {
     return !this.deckService || !this.deckService.cards || this.deckService.cards.length === 0;
   }
 
+  public get deckName() {
+    if (!this.deckService.currentDeck) return '';
+    return this.deckService.currentDeck.deckName;
+  }
+
 }
