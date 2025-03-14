@@ -7,6 +7,8 @@ import { DeckResponse } from '../../dtos/decks/deck-response.dto';
 import { CardsResponse } from '../../dtos/cards/cards-response.dto';
 import { DeckCreateResponse } from '../../dtos/decks/create/deck-create-response.dto';
 import { DeckCreateRequest } from '../../dtos/decks/create/deck-create-request.dto';
+import { CardCreateRequest } from '../../dtos/cards/create/card-create-request.dto';
+import { CardCreateResponse } from '../../dtos/cards/create/card-create-response.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,10 @@ export class DeckApiService {
 
   public createDeck(request: DeckCreateRequest): Observable<DeckCreateResponse> {
     return this.http.post<DeckCreateResponse>(`${this.apiurl}`, request, { withCredentials: true });
+  }
+
+  public createCard(request: CardCreateRequest): Observable<CardCreateResponse> {
+    return this.http.post<CardCreateResponse>(`${this.apiurl}/${request.deckPublicId}/cards`, request, { withCredentials: true });
   }
 
 }

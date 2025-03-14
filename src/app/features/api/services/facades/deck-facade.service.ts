@@ -8,6 +8,8 @@ import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardsResponse } from '../../dtos/cards/cards-response.dto';
 import { DeckCreateResponse } from '../../dtos/decks/create/deck-create-response.dto';
 import { DeckCreateRequest } from '../../dtos/decks/create/deck-create-request.dto';
+import { CardCreateResponse } from '../../dtos/cards/create/card-create-response.dto';
+import { CardCreateRequest } from '../../dtos/cards/create/card-create-request.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,11 @@ export class DeckFacadeService {
   public createDeck(deckName: string, deckPublicId: string, languageOriginalKey: string, languageTranslateKey: string): Observable<DeckCreateResponse> {
     const request: DeckCreateRequest = { deckName, deckPublicId, languageOriginalKey, languageTranslateKey };
     return this.deckApi.createDeck(request);
+  }
+
+  public createCard(deckPublicId: string, wordsOriginal: string[], wordsTranslate: string[]): Observable<CardCreateResponse> {
+    const request: CardCreateRequest = { deckPublicId, wordsOriginal, wordsTranslate };
+    return this.deckApi.createCard(request);
   }
 
 }
