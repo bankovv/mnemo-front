@@ -2,7 +2,23 @@
 
     <div class="opened-deck-header">
 
-        <div class="deck-options"></div>
+        <div class="deck-options">
+
+            <div class="language-select">
+
+                <input #original checked type="radio" id="original" name="lang" (change)="selectLanguageOriginal()">
+                <label for="original">
+                    <img src="./flags/{{languageOriginal}}.svg" draggable="false">
+                </label>
+
+                <input #translate type="radio" id="translate" name="lang" (change)="selectLanguageTranslate()">
+                <label for="translate">
+                    <img src="./flags/{{languageTranslate}}.svg" draggable="false">
+                </label>
+
+            </div>
+
+        </div>
 
         <div class="deck-title">{{deckName}}</div>
 
@@ -20,7 +36,7 @@
         </svg>
     </button>
 
-    <app-card></app-card>
+    <app-card #card></app-card>
 
     <button class="switch-card-button" id="next" (click)="nextCard()">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

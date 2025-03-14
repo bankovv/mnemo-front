@@ -41,6 +41,43 @@
 
 }
 
+.language-select {
+  display: flex;
+  gap: 5px;
+}
+
+.language-select input {
+  display: none;
+}
+
+.language-select label {
+
+  display: flex;
+  align-items: center;
+
+  background: var(--tertiary);
+  border: 1px solid transparent;
+
+  padding: 6px 9px;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: background 200ms ease-out;
+
+}
+
+.language-select label:hover {
+  border-color: var(--secondary-border);
+}
+
+input[type="radio"]:checked + label {
+  background: var(--accent);
+}
+
+.language-select label img {
+  height: 12px;
+}
+
 .deck-title {
   font-weight: bold;
   text-align: center;

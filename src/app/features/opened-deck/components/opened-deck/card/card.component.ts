@@ -35,7 +35,7 @@ export class CardComponent {
     this.updateWords();
   }
 
-  private updateWords() {
+  public updateWords() {
     const card = this.deckService.currentCard;
     if (!card) return;
     this.words = this.isOnOriginalSide() ? card.wordsOriginal : card.wordsTranslate;

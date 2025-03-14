@@ -1,9 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RoutingService } from '../../../../core/services/routing.service';
+import { CardComponent } from './card/card.component';
+import { DeckModel } from '../../../../shared/models/decks/deck.model';
 
 @Component({
   selector: 'app-opened-deck',
@@ -18,6 +20,9 @@ export class OpenedDeckComponent {
   private domSanitizer = inject(DomSanitizer);
 
   private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
+
+  @ViewChild('card')
+  public card!: CardComponent;
 
   public currentVideo: SafeResourceUrl | undefined = undefined;
   public currentCardIndex = signal('');
@@ -45,6 +50,16 @@ export class OpenedDeckComponent {
 
   }
 
+  public selectLanguageOriginal() {
+    this.deckService.isOriginalSideDefault = true;
+    this.card.updateWords();
+  }
+
+  public selectLanguageTranslate() {
+    this.deckService.isOriginalSideDefault = false;
+    this.card.updateWords();
+  }
+
   public prevCard() {
     this.deckService.prevCard();
   }
@@ -64,6 +79,14 @@ export class OpenedDeckComponent {
   public get deckName() {
     if (!this.deckService.currentDeck) return '';
     return this.deckService.currentDeck.deckName;
+  }
+
+  public get languageOriginal() {
+    return this.deckService.currentDeck.languageOriginal;
+  }
+
+  public get languageTranslate() {
+    return this.deckService.currentDeck.languageTranslate;
   }
 
 }

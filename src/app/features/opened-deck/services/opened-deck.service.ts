@@ -28,10 +28,17 @@ export class OpenedDeckService {
     this.routingService.onRouteChange(ev => {
       const url = ev.url.split('/');
       if (url[1] === 'deck') {
+
+        this._currentCardIndex = 0;
+        this.isOriginalSideDefault = true;
+        this.isOnOriginalSide = true;
+
         this._currentDeck = undefined!;
         this._currentCard = undefined!;
         this._cards = [];
+
         this.setCurrentDeck(url[2]);
+
       }
     });
   }
@@ -84,6 +91,11 @@ export class OpenedDeckService {
   public set currentCard(currentCard: CardModel) {
     this._currentCard = currentCard;
     this.currentCardChangeListeners.forEach(onChange => onChange(this._currentCard));
+  }
+
+  public set isOriginalSideDefault(isOriginalSideDefault: boolean) {
+    this._isOriginalSideDefault = isOriginalSideDefault;
+    this.isOnOriginalSide = isOriginalSideDefault;
   }
 
   public set isOnOriginalSide(original: boolean) {
