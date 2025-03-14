@@ -40,7 +40,8 @@
               "src/styles.css",
               "src/assets/themes/dark-theme.css",
               "src/assets/themes/light-theme.css",
-              "src/assets/themes/tuyu-theme.css"
+              "src/assets/themes/tuyu-theme.css",
+              "src/assets/components.css"
             ],
             "scripts": []
           },

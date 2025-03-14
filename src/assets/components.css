@@ -1,0 +1,11 @@
+.accent-button {
+  background: var(--accent);
+  border: 1px solid var(--primary-border);
+  border-radius: 4px;
+  padding: 8px 8px 8px 16px;
+  transition: background 200ms ease-in-out;
+}
+
+.accent-button:hover {
+  background: var(--accent-hover);
+}
