@@ -28,6 +28,9 @@ export class OpenedDeckService {
     this.routingService.onRouteChange(ev => {
       const url = ev.url.split('/');
       if (url[1] === 'deck') {
+        this._currentDeck = undefined!;
+        this._currentCard = undefined!;
+        this._cards = [];
         this.setCurrentDeck(url[2]);
       }
     });
