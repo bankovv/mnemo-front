@@ -4,12 +4,14 @@ import { DeckFacadeService } from '../../api/services/facades/deck-facade.servic
 import { CardModel } from '../../../shared/models/decks/card.model';
 import { RoutingService } from '../../../core/services/routing.service';
 import { firstValueFrom } from 'rxjs';
+import { CardRandomizerService } from './card-randomizer.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpenedDeckService {
 
+  private cardRandomizer = inject(CardRandomizerService);
   private deckFacade = inject(DeckFacadeService);
   private routingService = inject(RoutingService);
 
@@ -22,6 +24,7 @@ export class OpenedDeckService {
   private _currentCard!: CardModel;
   private _isOriginalSideDefault = true;
   private _isOnOriginalSide = signal(this._isOriginalSideDefault);
+  private _isRandomOrder = false;
   private _currentCardIndex: number = 0;
 
   constructor() {
@@ -45,14 +48,30 @@ export class OpenedDeckService {
 
   public nextCard() {
     this.isOnOriginalSide = this._isOriginalSideDefault;
-    this._currentCardIndex = this._currentCardIndex >= this._cards.length - 1 ? 0 : this._currentCardIndex + 1;
+    this.updateCurrentCardIndex(true);
     this.updateCurrentCard();
   }
 
   public prevCard() {
     this.isOnOriginalSide = this._isOriginalSideDefault;
-    this._currentCardIndex = this._currentCardIndex <= 0 ? this.cards.length - 1 : this._currentCardIndex - 1;
+    this.updateCurrentCardIndex(false);
     this.updateCurrentCard();
+  }
+
+  private updateCurrentCardIndex(next: boolean) {
+    if (this._isRandomOrder) this.updateCurrentCardIndexRandom(next);
+    else this.updateCurrentCardIndexDefault(next);
+  }
+
+  private updateCurrentCardIndexDefault(next: boolean) {
+    if (next)
+      this._currentCardIndex = this._currentCardIndex >= this._cards.length - 1 ? 0 : this._currentCardIndex + 1;
+    else
+      this._currentCardIndex = this._currentCardIndex <= 0 ? this.cards.length - 1 : this._currentCardIndex - 1;
+  }
+
+  private updateCurrentCardIndexRandom(next: boolean) {
+    this._currentCardIndex = next ? this.cardRandomizer.nextIndex() : this.cardRandomizer.prevIndex();
   }
 
   private updateCurrentCard() {
@@ -82,15 +101,30 @@ export class OpenedDeckService {
   // Setters
 
   public async setCurrentDeck(deckPublicId: string): Promise<void> {
+
     this._currentDeck = await firstValueFrom(this.deckFacade.getDeck(deckPublicId));
     this._cards = await firstValueFrom(this.deckFacade.getDeckCards(deckPublicId));
+
+    this.cardRandomizer.cardsLength = this._cards.length;
+    if (this._isRandomOrder)
+      this._currentCardIndex = this.cardRandomizer.nextIndex();
     this.updateCurrentCard();
+
     this.deckChangeListeners.forEach(onChange => onChange(this._currentDeck, this._cards));
+
   }
 
   public set currentCard(currentCard: CardModel) {
     this._currentCard = currentCard;
     this.currentCardChangeListeners.forEach(onChange => onChange(this._currentCard));
+  }
+
+  public set isRandomOrder(isRandomOrder: boolean) {
+    this._isRandomOrder = isRandomOrder;
+    if (this._isRandomOrder) {
+      this._currentCardIndex = this.cardRandomizer.nextIndex();
+      this.updateCurrentCard();
+    }
   }
 
   public set isOriginalSideDefault(isOriginalSideDefault: boolean) {
