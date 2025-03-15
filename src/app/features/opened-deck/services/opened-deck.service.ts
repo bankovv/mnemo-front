@@ -28,22 +28,22 @@ export class OpenedDeckService {
     this.routingService.onRouteChange(ev => {
       const url = ev.url.split('/');
       if (url[1] === 'deck') {
-
-        this._currentCardIndex = 0;
-        this.isOriginalSideDefault = true;
-        this.isOnOriginalSide = true;
-
-        this._currentDeck = undefined!;
-        this._currentCard = undefined!;
-        this._cards = [];
-
+        this.resetState();
         this.setCurrentDeck(url[2]);
-
       }
     });
   }
 
- public nextCard() {
+  private resetState() {
+    this._currentCardIndex = 0;
+    this.isOriginalSideDefault = true;
+    this.isOnOriginalSide = true;
+    this._currentDeck = undefined!;
+    this._currentCard = undefined!;
+    this._cards = [];
+  }
+
+  public nextCard() {
     this.isOnOriginalSide = this._isOriginalSideDefault;
     this._currentCardIndex = this._currentCardIndex >= this._cards.length - 1 ? 0 : this._currentCardIndex + 1;
     this.updateCurrentCard();
