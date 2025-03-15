@@ -59,6 +59,10 @@ export class OpenedDeckComponent {
     this.card.updateWords();
   }
 
+  public shuffleChanged(ev: any) {
+    this.deckService.isRandomOrder = ev.target.checked;
+  }
+
   public prevCard() {
     this.deckService.prevCard();
   }
