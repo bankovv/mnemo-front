@@ -1,8 +1,6 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../services/opened-deck.service';
-import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CardComponent } from './card/card.component';
 
 @Component({
@@ -13,9 +11,6 @@ import { CardComponent } from './card/card.component';
 export class OpenedDeckComponent {
 
   private deckService = inject(OpenedDeckService);
-  private videosService = inject(CardVideosFacadeService);
-  private domSanitizer = inject(DomSanitizer);
-
   private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
 
   @ViewChild('card')
@@ -23,7 +18,6 @@ export class OpenedDeckComponent {
   @ViewChild('createCardDialog')
   public createCardDialog!: ElementRef;
 
-  public currentVideo: SafeResourceUrl | undefined = undefined;
   public currentCardIndex = signal('');
 
   ngOnInit() {
@@ -35,18 +29,8 @@ export class OpenedDeckComponent {
   }
 
   private onCardChange(card: CardModel) {
-
     if (!card) return;
     this.currentCardIndex.set(`${this.deckService.currentCardIndex + 1} / ${this.deckService.cards.length}`);
-
-    this.videosService.getVideos(card.cardId).subscribe(videos => {
-      if (videos.length > 0) {
-        this.currentVideo = this.domSanitizer.bypassSecurityTrustResourceUrl(videos[0]);
-      } else {
-        this.currentVideo = undefined;
-      }
-    });
-
   }
 
   public selectLanguageOriginal() {

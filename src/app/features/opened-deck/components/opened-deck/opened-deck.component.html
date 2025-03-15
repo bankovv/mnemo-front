@@ -92,19 +92,6 @@
         </svg>
     </button>
 
-    <div class="card-video-wrapper">
-
-        <div *ngIf="this.currentVideo === undefined" class="no-videos">
-            No videos for this card
-        </div>
-
-        <iframe *ngIf="this.currentVideo !== undefined" 
-            [src]="this.currentVideo" 
-            allowfullscreen>
-        </iframe>
-
-    </div>
-
 </div>
 
 <div class="empty-deck" *ngIf="isDeckEmpty()">
