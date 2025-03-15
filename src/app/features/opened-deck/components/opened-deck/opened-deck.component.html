@@ -40,13 +40,13 @@
 
                 <div class="deck-actions-menu">
 
-                    <div class="deck-action">
+                    <div class="deck-action" (click)="createCardButtonClicked()">
                         <div class="deck-action-icon">
                             <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        Create card
+                        <app-translatable-text translateKey="openedDeck.header.actionsMenu.createCard"></app-translatable-text>
                     </div>
 
                     <div class="deck-action">
@@ -56,7 +56,7 @@
                                 <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        Edit deck
+                        <app-translatable-text translateKey="openedDeck.header.actionsMenu.editDeck"></app-translatable-text>
                     </div>
 
                 </div>
