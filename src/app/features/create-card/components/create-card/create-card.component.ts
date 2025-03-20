@@ -6,6 +6,7 @@ import { CardSettingsComponent } from '../../../../shared/components/card-settin
 import { DeckFacadeService } from '../../../api/services/facades/deck-facade.service';
 import { CardCreateResponse } from '../../../api/dtos/cards/create/card-create-response.dto';
 import { RoutingService } from '../../../../core/services/routing.service';
+import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 
 @Component({
   selector: 'app-create-card',
@@ -17,6 +18,7 @@ export class CreateCardComponent {
   private deckService = inject(OpenedDeckService);
   private routingService = inject(RoutingService);
   private deckFacadeService = inject(DeckFacadeService);
+  private cardVideosFacadeService = inject(CardVideosFacadeService);
 
   @ViewChild('cardSettings')
   public cardSettings!: CardSettingsComponent;
@@ -56,7 +58,14 @@ export class CreateCardComponent {
     this.deckFacadeService.createCard(
       this.deck.deckPublicId, this.card.wordsOriginal, this.card.wordsTranslate
     ).subscribe((resp: CardCreateResponse) => {
+
       this.routingService.navigate(['deck', this.deck.deckPublicId]);
+
+      if (this.cardSettings.cardVideos && this.cardSettings.cardVideos.length !== 0 && resp.cardId !== -1) {
+        this.cardSettings.cardVideos.forEach(video =>
+          this.cardVideosFacadeService.addVideo(resp.cardId, this.deck.deckPublicId, video).subscribe());
+      }
+
     });
 
   }
