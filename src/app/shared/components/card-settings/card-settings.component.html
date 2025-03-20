@@ -2,6 +2,6 @@
 
   <app-card-words-list #original [deck]="deck" [card]="card" [isOriginalLanguage]="true"></app-card-words-list>
   <app-card-words-list #translate [deck]="deck" [card]="card" [isOriginalLanguage]="false"></app-card-words-list>
-  <app-card-videos-list [cardId]="card.cardId"></app-card-videos-list>
+  <app-card-videos-list #videos [cardId]="card.cardId"></app-card-videos-list>
 
 </div>
