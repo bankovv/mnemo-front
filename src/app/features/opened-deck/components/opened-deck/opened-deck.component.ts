@@ -2,6 +2,8 @@ import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core'
 import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardComponent } from './card/card.component';
+import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-opened-deck',
@@ -11,12 +13,17 @@ import { CardComponent } from './card/card.component';
 export class OpenedDeckComponent {
 
   private deckService = inject(OpenedDeckService);
+  private videoService = inject(CardVideosFacadeService);
   private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
 
   @ViewChild('card')
   public card!: CardComponent;
   @ViewChild('createCardDialog')
   public createCardDialog!: ElementRef;
+  @ViewChild('videoDialog')
+  public videoDialog!: ElementRef;
+  @ViewChild('videoFrame')
+  public videoFrame!: ElementRef;
 
   public currentCardIndex = signal('');
 
@@ -57,6 +64,16 @@ export class OpenedDeckComponent {
 
   public createCardButtonClicked() {
     this.createCardDialog.nativeElement.showModal();
+  }
+
+  public async videoButtonClicked() {
+    this.videoFrame.nativeElement.removeAttribute('src');
+    this.videoService.getVideos(this.deckService.currentCard.cardId).subscribe(resp => {
+      if (resp && resp.length > 0) {
+        this.videoFrame.nativeElement.src = resp[0];
+        this.videoDialog.nativeElement.showModal();
+      }
+    });
   }
 
   public isDeckEmpty(): boolean {
