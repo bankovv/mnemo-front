@@ -1,0 +1,107 @@
+:host {
+  --video-preview-width: 177px;
+  --video-preview-height: 100px;
+}
+
+.card-videos-wrapper {
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--primary);
+  border: 1px solid var(--secondary-border);
+
+  border-radius: 4px;
+  padding: 30px 30px;
+  gap: 20px;
+
+}
+
+.card-video-add {
+
+  display: flex;
+  border: 1px solid var(--secondary-border);
+
+  border-radius: 4px;
+  padding: 10px 20px;
+
+  width: 70%;
+
+}
+
+.card-video-add input {
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.card-video-add button {
+
+  display: flex;
+  align-items: center;
+
+  background: none;
+  border: 1px solid var(--secondary-border);
+
+  border-radius: 4px;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  padding-right: 6px;
+  gap: 3px;
+
+}
+
+.card-video-add button:hover {
+  background: var(--secondary-hover);
+}
+
+.card-video-add button svg {
+  fill: var(--text-secondary);
+}
+
+.card-video-item {
+
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+
+  transition: background 100ms ease-in-out;
+
+}
+
+.card-video-item:hover {
+  background: var(--tertiary-hover);
+}
+
+.card-video-preview {
+
+  border: 1px solid var(--secondary-border);
+
+  border-radius: 4px;
+  min-width: 100px;
+  width: var(--video-preview-width);
+  height: var(--video-preview-height);
+
+}
+
+.card-video-url {
+  word-break: break-all;
+  overflow: hidden;
+  line-height: 1.7rem;
+}
+
+.remove-video-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.remove-video-button svg {
+  stroke: var(--text-secondary);
+}
