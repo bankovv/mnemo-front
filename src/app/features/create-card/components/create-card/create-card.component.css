@@ -18,6 +18,8 @@
 
 .create-card-button {
 
+  grid-row: span 2;
+  align-self: center;
   display: flex;
   gap: 10px;
 

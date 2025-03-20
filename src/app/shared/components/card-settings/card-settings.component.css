@@ -8,3 +8,7 @@
   width: fit-content;
 
 }
+
+app-card-videos-list {
+  grid-column: span 2;
+}
