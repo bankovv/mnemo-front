@@ -1,5 +1,6 @@
 import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
 import { CardVideosFacadeService } from '../../../../features/api/services/facades/card-videos-facade.service';
+import { extractYtVideoId } from '../../../utils';
 
 @Component({
   selector: 'app-card-videos-list',
@@ -36,11 +37,9 @@ export class CardVideosListComponent {
   }
 
   public getVideoPreview(video: string) {
-    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+[\?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = video.match(regex);
-    if (!match) return '';
-    const videoId = match[1];
-    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    const videoId = extractYtVideoId(video);
+    if (!videoId) return '';
+   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   }
 
   public isNoVideos(): boolean {
