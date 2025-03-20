@@ -4,6 +4,7 @@ import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardComponent } from './card/card.component';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { firstValueFrom } from 'rxjs';
+import { extractYtVideoId } from '../../../../shared/utils';
 
 @Component({
   selector: 'app-opened-deck',
@@ -70,7 +71,9 @@ export class OpenedDeckComponent {
     this.videoFrame.nativeElement.removeAttribute('src');
     this.videoService.getVideos(this.deckService.currentCard.cardId).subscribe(resp => {
       if (resp && resp.length > 0) {
-        this.videoFrame.nativeElement.src = resp[0];
+        const videoId = extractYtVideoId(resp[0]);
+        const url = `https://www.youtube.com/embed/${videoId}`;
+        this.videoFrame.nativeElement.src = url;
         this.videoDialog.nativeElement.showModal();
       }
     });
