@@ -1,4 +1,5 @@
 export interface CardCreateResponse {
   created: boolean,
-  msg: string
+  msg: string,
+  cardId: number
 }
