@@ -3,7 +3,6 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: max-content max-content;
   gap: 50px;
   width: fit-content;
 
