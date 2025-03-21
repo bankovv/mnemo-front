@@ -37,7 +37,7 @@ export class DeckComponent {
 
   public deckLeftClicked(): void {
     if (this.optionsMenu.nativeElement.style.display !== 'none') return;
-    this.routingService.navigate(['deck', this.deck.deckPublicId]);
+    this.openDeck();
   }
 
   public deckRightClicked(event: MouseEvent): void {
@@ -52,6 +52,10 @@ export class DeckComponent {
     const x = this.optionsButton.nativeElement.offsetLeft + 10;
     const y = this.optionsButton.nativeElement.offsetTop + 15;
     this.toggleMenu(x, y);
+  }
+
+  public openDeck() {
+    this.routingService.navigate(['deck', this.deck.deckPublicId]);
   }
 
   private toggleMenu(x: number, y: number) {
