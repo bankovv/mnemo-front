@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, Renderer2, ViewChild } from '@angular/core';
 import { DeckModel } from '../../models/decks/deck.model';
 import { RoutingService } from '../../../core/services/routing.service';
 
@@ -23,6 +23,9 @@ export class DeckComponent {
   public optionsMenu!: ElementRef;
   @ViewChild('optionsButton')
   public optionsButton!: ElementRef;
+
+  private renederer = inject(Renderer2);
+  private documentClickListener!: () => void;
 
   ngAfterViewInit() {
 
@@ -58,10 +61,26 @@ export class DeckComponent {
 
     if (this.optionsMenu.nativeElement.style.display === 'none') {
       this.optionsMenu.nativeElement.style.display = 'grid';
+      this.addDocumentClickListener();
     } else {
       this.optionsMenu.nativeElement.style.display = 'none';
+      this.removeDocumentClickListener();
     }
 
+  }
+
+  private addDocumentClickListener() {
+    this.documentClickListener = this.renederer.listen('document', 'click', (ev: Event) => {
+      if (!this.optionsMenu.nativeElement.contains(ev.target)) {
+        this.optionsMenu.nativeElement.style.display = 'none';
+        this.removeDocumentClickListener();
+      }
+    });
+  }
+
+  private removeDocumentClickListener() {
+    if (this.documentClickListener)
+      this.documentClickListener();
   }
 
 }
