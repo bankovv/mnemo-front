@@ -46,6 +46,10 @@ export class OpenedDeckService {
     this._cards = [];
   }
 
+  public turnCard() {
+    this.isOnOriginalSide = !this.isOnOriginalSide;
+  }
+
   public nextCard() {
     this.isOnOriginalSide = this._isOriginalSideDefault;
     this.updateCurrentCardIndex(true);
