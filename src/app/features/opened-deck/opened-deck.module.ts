@@ -4,8 +4,7 @@ import { OpenedDeckComponent } from './components/opened-deck/opened-deck.compon
 import { CardComponent } from './components/opened-deck/card/card.component';
 import { SharedModule } from '../../shared/shared.module';
 import { CreateCardModule } from '../create-card/create-card.module';
-
-
+import { DictationModule } from '../dictation/dictation.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,8 @@ import { CreateCardModule } from '../create-card/create-card.module';
   imports: [
     CommonModule,
     SharedModule,
-    CreateCardModule
+    CreateCardModule,
+    DictationModule
   ]
 })
 export class OpenedDeckModule { }

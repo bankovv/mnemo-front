@@ -9,7 +9,10 @@ import { DictationComponent } from './components/dictation/dictation.component';
     DictationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    DictationComponent
   ]
 })
 export class DictationModule { }

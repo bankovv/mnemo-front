@@ -68,7 +68,7 @@
 
                     <div class="deck-actions-separator"></div>
 
-                    <div class="deck-action">
+                    <div class="deck-action" (click)="dictationButtonClicked()">
                         <div class="deck-action-icon fill-icon">
                         </div>
                         Dictation
@@ -134,4 +134,8 @@
 
 <dialog #videoDialog>
     <iframe #videoFrame allowfullscreen></iframe>
+</dialog>
+
+<dialog #dictationDialog>
+    <app-dictation></app-dictation>
 </dialog>

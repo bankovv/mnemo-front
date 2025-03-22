@@ -19,12 +19,17 @@ export class OpenedDeckComponent {
 
   @ViewChild('card')
   public card!: CardComponent;
+
   @ViewChild('createCardDialog')
   public createCardDialog!: ElementRef;
+
   @ViewChild('videoDialog')
   public videoDialog!: ElementRef;
   @ViewChild('videoFrame')
   public videoFrame!: ElementRef;
+
+  @ViewChild('dictationDialog')
+  public dictationDialog!: ElementRef;
 
   public currentCardIndex = signal('');
 
@@ -77,6 +82,10 @@ export class OpenedDeckComponent {
         this.videoDialog.nativeElement.showModal();
       }
     });
+  }
+
+  public dictationButtonClicked() {
+    this.dictationDialog.nativeElement.showModal();
   }
 
   public isDeckEmpty(): boolean {
