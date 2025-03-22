@@ -1,10 +1,9 @@
-import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
-import { CardComponent } from './card/card.component';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
-import { firstValueFrom } from 'rxjs';
 import { extractYtVideoId } from '../../../../shared/utils';
+import { CardComponent } from '../../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-opened-deck',
@@ -12,6 +11,8 @@ import { extractYtVideoId } from '../../../../shared/utils';
   styleUrl: './opened-deck.component.css'
 })
 export class OpenedDeckComponent {
+
+  private changeDetector = inject(ChangeDetectorRef);
 
   private deckService = inject(OpenedDeckService);
   private videoService = inject(CardVideosFacadeService);
@@ -37,27 +38,45 @@ export class OpenedDeckComponent {
     this.deckService.onCurrentCardChange(this.cardChangeListener);
   }
 
+  ngAfterViewChecked() {
+    this.updateCard();
+    this.changeDetector.detectChanges();
+  }
+
   ngOnDestroy() {
     this.deckService.offCurrentCardChange(this.cardChangeListener);
+  }
+
+  private updateCard() {
+    if (this.card) {
+      this.card.isOnOriginalSide.set(this.deckService.isOnOriginalSide);
+      this.card.updateWords(this.deckService.currentCard);
+    }
   }
 
   private onCardChange(card: CardModel) {
     if (!card) return;
     this.currentCardIndex.set(`${this.deckService.currentCardIndex + 1} / ${this.deckService.cards.length}`);
+    this.updateCard();
   }
 
   public selectLanguageOriginal() {
     this.deckService.isOriginalSideDefault = true;
-    this.card.updateWords();
+    this.updateCard();
   }
 
   public selectLanguageTranslate() {
     this.deckService.isOriginalSideDefault = false;
-    this.card.updateWords();
+    this.updateCard();
   }
 
   public shuffleChanged(ev: any) {
     this.deckService.isRandomOrder = ev.target.checked;
+  }
+
+  public cardClicked() {
+    this.deckService.turnCard();
+    this.updateCard();
   }
 
   public prevCard() {

@@ -93,7 +93,7 @@
             </svg>
         </button>
 
-        <app-card #card></app-card>
+        <app-card #card (click)="cardClicked()"></app-card>
 
         <button class="switch-card-button" id="next" (click)="nextCard()">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

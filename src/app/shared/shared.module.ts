@@ -6,11 +6,13 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
 import { CardSettingsComponent } from './components/card-settings/card-settings.component';
 import { CardWordsListComponent } from './components/card-settings/card-words-list/card-words-list.component';
 import { CardVideosListComponent } from './components/card-settings/card-videos-list/card-videos-list.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     TranslatableTextComponent,
     DeckComponent,
+    CardComponent,
     LanguageSelectorComponent,
     CardSettingsComponent,
     CardWordsListComponent,
@@ -22,6 +24,7 @@ import { CardVideosListComponent } from './components/card-settings/card-videos-
   exports: [
     TranslatableTextComponent,
     DeckComponent,
+    CardComponent,
     LanguageSelectorComponent,
     CardSettingsComponent
   ]
