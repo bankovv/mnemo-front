@@ -12,6 +12,7 @@ import { SearchModule } from './features/search/search.module';
 import { OpenedDeckModule } from './features/opened-deck/opened-deck.module';
 import { CreateDeckModule } from './features/create-deck/create-deck.module';
 import { CreateCardModule } from './features/create-card/create-card.module';
+import { DictationModule } from './features/dictation/dictation.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreateCardModule } from './features/create-card/create-card.module';
     SearchModule,
     OpenedDeckModule,
     CreateDeckModule,
-    CreateCardModule
+    CreateCardModule,
+    DictationModule
 
   ],
   providers: [
