@@ -146,6 +146,7 @@ input[type="radio"]:checked + label {
   display: flex;
   flex-direction: column;
   position: absolute;
+  align-items: center;
   top: 104%;
   right: 0;
 
@@ -176,6 +177,14 @@ input[type="radio"]:checked + label {
 
 }
 
+.deck-actions-separator {
+  background: var(--secondary-border);
+  width: 90%;
+  height: 1px;
+  opacity: 0.7;
+  margin: 2px 0;
+}
+
 .deck-action:hover {
   background: var(--tertiary-hover);
 }
@@ -185,6 +194,10 @@ input[type="radio"]:checked + label {
   align-items: center;
   justify-content: center;
   width: 26px;
+}
+
+.fill-icon {
+  fill: var(--text-secondary);
 }
 
 .deck-action-icon svg {
