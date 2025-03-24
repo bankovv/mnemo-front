@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DictationComponent } from './components/dictation/dictation.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -10,6 +11,7 @@ import { DictationComponent } from './components/dictation/dictation.component';
   ],
   imports: [
     CommonModule,
+    SharedModule
   ],
   exports: [
     DictationComponent

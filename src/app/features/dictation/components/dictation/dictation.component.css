@@ -1,0 +1,54 @@
+.dictation-wrapper {
+  display: grid;
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.dictation-answer {
+  display: flex;
+  gap: 10px;
+}
+
+.switch-question-button {
+  display: grid;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.switch-question-button svg {
+  fill: var(--text-secondary);
+  width: 20px;
+  height: 20px;
+}
+
+.dictation-answer-input {
+
+  display: flex;
+  border: 1px solid var(--secondary-border);
+  border-radius: 4px;
+  padding: 10px 10px;
+  width: 100%;
+
+}
+
+.dictation-answer-input input {
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.dictation-answer-input button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.dictation-answer-input button svg {
+  fill: var(--text-secondary);
+}
+
+.dictation-answer-input button:hover svg {
+  fill: var(--card-translate);
+}
