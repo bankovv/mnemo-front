@@ -1,9 +1,11 @@
 <div class="dictation-wrapper">
 
+  <div class="counter">{{counter()}}</div>
+
   <app-card #question></app-card>
   <div class="dictation-answer">
 
-    <button class="switch-question-button">
+    <button class="switch-question-button" (click)="prevQuestion()">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
           <g id="SVGRepo_bgCarrier" stroke-width="0"/>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,8 +14,8 @@
     </button>
 
     <div class="dictation-answer-input">
-      <input type="text" placeholder="answer">
-      <button>
+      <input #answerInput type="text" placeholder="answer" (keydown.enter)="addAnswer()">
+      <button (click)="addAnswer()">
         <svg height="16px" width="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 55.702 55.702" xml:space="preserve">
           <g>
             <path d="M27.851,0C12.494,0,0,12.494,0,27.851s12.494,27.851,27.851,27.851s27.851-12.494,27.851-27.851 C55.701,12.494,43.208,0,27.851,0z M27.851,51.213c-12.882,0-23.362-10.48-23.362-23.363c0-12.882,10.48-23.362,23.362-23.362 s23.362,10.481,23.362,23.363S40.733,51.213,27.851,51.213z"/>
@@ -23,7 +25,7 @@
       </button>
     </div>
 
-    <button class="switch-question-button">
+    <button class="switch-question-button" (click)="nextQuestion()">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 6L15 12L9 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -31,5 +33,9 @@
 
   </div>
   <app-card #answer></app-card>
+
+  <button class="complete-button accent-button">
+    Complete
+  </button>
 
 </div>
