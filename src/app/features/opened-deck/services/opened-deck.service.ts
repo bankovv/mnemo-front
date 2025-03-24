@@ -17,6 +17,7 @@ export class OpenedDeckService {
 
   private deckChangeListeners: ((deck: DeckModel, cards: CardModel[]) => void)[] = [];
   private currentCardChangeListeners: ((card: CardModel) => void)[] = [];
+  private isOriginalSideDefaultListeners: ((isOnOriginalSide: boolean) => void)[] = [];
 
   private _currentDeck!: DeckModel;
   private _cards!: CardModel[];
@@ -102,6 +103,15 @@ export class OpenedDeckService {
     this.currentCardChangeListeners.splice(index, 1);
   }
 
+  public onIsOriginalSideDefaultChange(onChange: (isOrig: boolean) => void) {
+    this.isOriginalSideDefaultListeners.push(onChange);
+  }
+
+  public offIsOriginalSideDefaultChange(onChange: (isOrig: boolean) => void) {
+    const index = this.isOriginalSideDefaultListeners.indexOf(onChange);
+    this.isOriginalSideDefaultListeners.splice(index, 1);
+  }
+
   // Setters
 
   public async setCurrentDeck(deckPublicId: string): Promise<void> {
@@ -134,6 +144,7 @@ export class OpenedDeckService {
   public set isOriginalSideDefault(isOriginalSideDefault: boolean) {
     this._isOriginalSideDefault = isOriginalSideDefault;
     this.isOnOriginalSide = isOriginalSideDefault;
+    this.isOriginalSideDefaultListeners.forEach(onChange => onChange(isOriginalSideDefault));
   }
 
   public set isOnOriginalSide(original: boolean) {
