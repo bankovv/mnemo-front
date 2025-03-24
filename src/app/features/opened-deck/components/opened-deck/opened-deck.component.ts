@@ -12,8 +12,6 @@ import { CardComponent } from '../../../../shared/components/card/card.component
 })
 export class OpenedDeckComponent {
 
-  private changeDetector = inject(ChangeDetectorRef);
-
   private deckService = inject(OpenedDeckService);
   private videoService = inject(CardVideosFacadeService);
   private cardChangeListener: (CardModel: CardModel) => void = this.onCardChange.bind(this);
@@ -36,11 +34,6 @@ export class OpenedDeckComponent {
 
   ngOnInit() {
     this.deckService.onCurrentCardChange(this.cardChangeListener);
-  }
-
-  ngAfterViewChecked() {
-    this.updateCard();
-    this.changeDetector.detectChanges();
   }
 
   ngOnDestroy() {
@@ -117,10 +110,14 @@ export class OpenedDeckComponent {
   }
 
   public get languageOriginal() {
+    if (!this.deckService || !this.deckService.currentDeck)
+      return '';
     return this.deckService.currentDeck.languageOriginal;
   }
 
   public get languageTranslate() {
+    if (!this.deckService || !this.deckService.currentDeck)
+      return '';
     return this.deckService.currentDeck.languageTranslate;
   }
 

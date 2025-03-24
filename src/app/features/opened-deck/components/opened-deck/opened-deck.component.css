@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .opened-deck-wrapper {
 
   display: grid;

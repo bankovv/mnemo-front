@@ -1,4 +1,4 @@
-<div class="opened-deck-wrapper" *ngIf="!isDeckEmpty()">
+<div class="opened-deck-wrapper" [ngClass]="{'hidden': isDeckEmpty()}">
 
     <div class="opened-deck-header">
 
