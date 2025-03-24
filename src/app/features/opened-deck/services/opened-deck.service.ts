@@ -154,6 +154,10 @@ export class OpenedDeckService {
     return this._currentCard;
   }
 
+  public get isOriginalSideDefault(): boolean {
+    return this._isOriginalSideDefault;
+  }
+
   public get isOnOriginalSide(): boolean {
     return this._isOnOriginalSide();
   }
