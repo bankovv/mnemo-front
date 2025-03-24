@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
