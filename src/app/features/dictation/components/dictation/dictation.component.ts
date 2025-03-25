@@ -62,18 +62,21 @@ export class DictationComponent {
   private dictationRestarted() {
     this.updateWords();
     this.updateCounter();
+    setTimeout(() => this.focusAnswerInput(), 0); // don't remove timeout
   }
 
   public prevQuestion() {
     this.dictationService.prevQuestion();
     this.updateWords();
     this.updateCounter();
+    this.focusAnswerInput();
   }
 
   public nextQuestion() {
     this.dictationService.nextQuestion();
     this.updateWords();
     this.updateCounter();
+    this.focusAnswerInput();
   }
 
   public addAnswer() {
@@ -103,6 +106,10 @@ export class DictationComponent {
 
   public get isDictationCompleted() {
     return this.dictationService.isDictationCompleted;
+  }
+
+  public focusAnswerInput() {
+    this.answerInput.nativeElement.focus();
   }
 
 }

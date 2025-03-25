@@ -4,6 +4,7 @@ import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
 import { extractYtVideoId } from '../../../../shared/utils';
 import { CardComponent } from '../../../../shared/components/card/card.component';
+import { DictationComponent } from '../../../dictation/components/dictation/dictation.component';
 
 @Component({
   selector: 'app-opened-deck',
@@ -45,6 +46,8 @@ export class OpenedDeckComponent {
 
   @ViewChild('dictationDialog')
   public dictationDialog!: ElementRef;
+  @ViewChild('dictation')
+  public dictationElement!: DictationComponent;
 
   public currentCardIndex = signal('');
 
@@ -123,6 +126,7 @@ export class OpenedDeckComponent {
 
   public dictationButtonClicked() {
     this.dictationDialog.nativeElement.showModal();
+    this.dictationElement.focusAnswerInput();
   }
 
   public isDeckEmpty(): boolean {
