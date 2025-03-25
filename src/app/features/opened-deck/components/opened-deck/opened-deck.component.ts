@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, signal, ViewChild } from '@angular/core';
 import { OpenedDeckService } from '../../services/opened-deck.service';
 import { CardModel } from '../../../../shared/models/decks/card.model';
 import { CardVideosFacadeService } from '../../../api/services/facades/card-videos-facade.service';
@@ -11,6 +11,22 @@ import { CardComponent } from '../../../../shared/components/card/card.component
   styleUrl: './opened-deck.component.css'
 })
 export class OpenedDeckComponent {
+
+  private hotkeys: Record<string, () => void> = {
+
+    'h': () => this.prevCard(),
+    'ArrowLeft': () => this.prevCard(),
+
+    'l': () => this.nextCard(),
+    'ArrowRight': () => this.nextCard(),
+
+    'k': () => this.cardClicked(),
+    'j': () => this.cardClicked(),
+    'ArrowUp': () => this.cardClicked(),
+    'ArrowDown': () => this.cardClicked(),
+    'Enter': () => this.cardClicked(),
+
+  }
 
   private deckService = inject(OpenedDeckService);
   private videoService = inject(CardVideosFacadeService);
@@ -38,6 +54,15 @@ export class OpenedDeckComponent {
 
   ngOnDestroy() {
     this.deckService.offCurrentCardChange(this.cardChangeListener);
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  private handleKeys(event: KeyboardEvent) {
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT'))
+      return;
+    if (event.key in this.hotkeys)
+      this.hotkeys[event.key]();
   }
 
   private updateCard() {
