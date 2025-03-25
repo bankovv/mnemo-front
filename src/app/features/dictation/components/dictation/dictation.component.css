@@ -1,3 +1,7 @@
+:host {
+  display: flex;
+}
+
 .dictation-wrapper {
   display: grid;
   padding: 0 40px;

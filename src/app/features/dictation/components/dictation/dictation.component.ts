@@ -18,6 +18,8 @@ export class DictationComponent {
   private deckChangeListener: (deck: DeckModel) => void = this.deckChanged.bind(this);
   private isOriginalSideDefaultListener: (isOrig: boolean) => void = this.isOriginalSideDefaultChanged.bind(this);
 
+  private dictationRestartListener: () => void = this.dictationRestarted.bind(this);
+
   @ViewChild('question')
   public questionCard!: CardComponent;
   @ViewChild('answer')
@@ -30,11 +32,13 @@ export class DictationComponent {
   ngOnInit() {
     this.deckService.onDeckChange(this.deckChangeListener);
     this.deckService.onIsOriginalSideDefaultChange(this.isOriginalSideDefaultListener);
+    this.dictationService.onDictationRestart(this.dictationRestartListener);
   }
 
   ngOnDestroy() {
     this.deckService.offDeckChange(this.deckChangeListener);
     this.deckService.offIsOriginalSideDefaultChange(this.isOriginalSideDefaultListener);
+    this.dictationService.offDictationRestart(this.dictationRestartListener);
   }
 
   private deckChanged() {
@@ -53,6 +57,11 @@ export class DictationComponent {
   private isOriginalSideDefaultChanged(isOriginalSideDefault: boolean) {
     this.dictationService.isOnOriginalSide = isOriginalSideDefault;
     this.updateWords();
+  }
+
+  private dictationRestarted() {
+    this.updateWords();
+    this.updateCounter();
   }
 
   public prevQuestion() {
@@ -75,6 +84,14 @@ export class DictationComponent {
     this.answerInput.nativeElement.value = '';
   }
 
+  public completeDictation() {
+    this.dictationService.isDictationCompleted = true;
+  }
+
+  public restartDictation() {
+    this.dictationService.restartDictation();
+  }
+
   private updateCounter() {
     this.counter.set(this.dictationService.counter);
   }
@@ -82,6 +99,10 @@ export class DictationComponent {
   private updateWords() {
     this.questionCard.words = this.dictationService.currentQuestionWords;
     this.answerCard.words = this.dictationService.currentAnswerWords;
+  }
+
+  public get isDictationCompleted() {
+    return this.dictationService.isDictationCompleted;
   }
 
 }

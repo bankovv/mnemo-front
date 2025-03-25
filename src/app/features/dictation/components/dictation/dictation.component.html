@@ -1,4 +1,4 @@
-<div class="dictation-wrapper">
+<div class="dictation-wrapper" [ngClass]="{'hidden': isDictationCompleted}">
 
   <div class="counter">{{counter()}}</div>
 
@@ -34,8 +34,10 @@
   </div>
   <app-card #answer></app-card>
 
-  <button class="complete-button accent-button">
+  <button class="complete-button accent-button" (click)="completeDictation()">
     Complete
   </button>
 
 </div>
+
+<app-dictation-results [ngClass]="{'hidden': !isDictationCompleted}"></app-dictation-results>
