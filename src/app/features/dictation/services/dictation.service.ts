@@ -9,9 +9,12 @@ export class DictationService {
 
   private _cards!: CardModel[];
   private _isOnOriginalSide!: boolean;
+  private _isDictationCompleted!: boolean;
 
   private currentQuestionIndex: number = 0;
-  private dictationResults: DictationCard[] = [];
+  private _dictationResults: DictationCard[] = [];
+
+  private onDictationRestartListeners: (() => void)[] = [];
 
   public nextQuestion() {
     this.currentQuestionIndex = this.currentQuestionIndex >= this._cards.length - 1 ? 0 : this.currentQuestionIndex + 1;
@@ -26,18 +29,34 @@ export class DictationService {
     this.currentDictationCard.enteredAnswerWords.push(answer);
   }
 
+  public restartDictation() {
+    this.currentQuestionIndex = 0;
+    this.clearDictationResults();
+    this.isDictationCompleted = false;
+    this.onDictationRestartListeners.forEach(onRestart => onRestart());
+  }
+
+  public onDictationRestart(onRestart: () => void) {
+    this.onDictationRestartListeners.push(onRestart);
+  }
+
+  public offDictationRestart(onRestart: () => void) {
+    const index = this.onDictationRestartListeners.indexOf(onRestart);
+    this.onDictationRestartListeners.splice(index, 1);
+  }
+
   private clearDictationResults() {
 
     if (!this._cards) return;
 
-    this.dictationResults = [];
+    this._dictationResults = [];
     this._cards.forEach(card => {
       const dictCard: DictationCard = {
         questionWords: this._isOnOriginalSide ? card.wordsOriginal : card.wordsTranslate,
         rightAnswerWords: this._isOnOriginalSide ? card.wordsTranslate : card.wordsOriginal,
         enteredAnswerWords: []
       }
-      this.dictationResults.push(dictCard);
+      this._dictationResults.push(dictCard);
     });
 
   }
@@ -45,8 +64,8 @@ export class DictationService {
   // Getters
 
   public get currentDictationCard(): DictationCard {
-    if (this.dictationResults.length === 0) return {questionWords: [], rightAnswerWords: [], enteredAnswerWords: []};
-    return this.dictationResults[this.currentQuestionIndex];
+    if (this._dictationResults.length === 0) return {questionWords: [], rightAnswerWords: [], enteredAnswerWords: []};
+    return this._dictationResults[this.currentQuestionIndex];
   }
 
   public get currentQuestionWords(): string[] {
@@ -61,17 +80,28 @@ export class DictationService {
     return this.currentQuestionIndex+1 + ' / ' + this._cards.length;
   }
 
+  public get dictationResults() {
+    return this._dictationResults;
+  }
+
+  public get isDictationCompleted() {
+    return this._isDictationCompleted;
+  }
+
   // Setters
 
   public set cards(cards: CardModel[]) {
     this._cards = cards;
-    this.currentQuestionIndex = 0;
-    this.clearDictationResults();
+    this.restartDictation();
   }
 
   public set isOnOriginalSide(isOnOriginalSide: boolean) {
     this._isOnOriginalSide = isOnOriginalSide;
     this.clearDictationResults();
+  }
+
+  public set isDictationCompleted(isDictationCompleted: boolean) {
+    this._isDictationCompleted = isDictationCompleted;
   }
 
 }
