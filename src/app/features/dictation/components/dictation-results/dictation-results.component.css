@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+}
+
+.dictation-results-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+
+.results {
+  border: 1px solid var(--secondary-border);
+  overflow-y: auto;
+  scrollbar-color: var(--text-secondary) var(--secondary);
+  scrollbar-width: thin;
+}
+
+.card-row {
+  display: flex;
+}
+
+.words-column {
+
+  border: 1px solid var(--secondary-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+  padding: 5px 10px;
+
+}
+
+.word {
+  word-wrap: break-word;
+  padding: 5px 0;
+}
+
+.word-right {
+  color: green;
+}
+
+.word-wrong {
+  color: red;
+}

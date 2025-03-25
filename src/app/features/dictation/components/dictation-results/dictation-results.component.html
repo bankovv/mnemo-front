@@ -1,1 +1,35 @@
-<p>dictation-results works!</p>
+<div class="dictation-results-wrapper">
+
+  <h3>Dictation results</h3>
+
+  <div class="results">
+
+    <div class="card-row">
+      <div class="words-column">Question</div>
+      <div class="words-column">Right answer</div>
+      <div class="words-column">Entered answer</div>
+    </div>
+
+    <div class="card-row" *ngFor="let card of results">
+
+      <div class="words-column">
+        <div class="word" *ngFor="let word of card.questionWords">{{word}}</div>
+      </div>
+
+      <div class="words-column">
+        <div class="word" [ngClass]="isRightAnswerMatched(card, word) ? 'word-right': 'word-wrong'" *ngFor="let word of card.rightAnswerWords">{{word}}</div>
+      </div>
+
+      <div class="words-column">
+        <div class="word" [ngClass]="isEnteredAnswerMatched(card, word) ? 'word-right' : 'word-wrong'" *ngFor="let word of card.enteredAnswerWords">{{word}}</div>
+      </div>
+
+    </div>
+
+    </div>
+
+  <div class="buttons">
+    <button class="accent-button" (click)="restartDictation()">Again</button>
+  </div>
+
+</div>
