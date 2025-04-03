@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-my-decks',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './my-decks.component.css'
 })
 export class MyDecksComponent {
+
+  public isOnAddedList = signal(true);
+
+  public addedRadioChanged() {
+    this.isOnAddedList.set(true);
+  }
+
+  public createdRadioChanged() {
+    this.isOnAddedList.set(false);
+  }
 
 }

@@ -2,12 +2,12 @@
 
     <div class="my-decks-list-select">
 
-        <input type="radio" id="added" name="my-decks-select">
+        <input checked type="radio" id="added" name="my-decks-select" (change)="addedRadioChanged()">
         <label for="added">
             <app-translatable-text translateKey="myDecks.menu.added"/>
         </label>
 
-        <input type="radio" id="created" name="my-decks-select">
+        <input type="radio" id="created" name="my-decks-select" (change)="createdRadioChanged()">
         <label for="created">
             <app-translatable-text translateKey="myDecks.menu.created"/>
         </label>
@@ -16,12 +16,12 @@
 
     <div class="my-decks-list">
 
-        <div class="my-decks-added">
-
+        <div class="my-decks-added" *ngIf="isOnAddedList()">
+            added
         </div>
 
-        <div class="my-decks-created">
-
+        <div class="my-decks-created" *ngIf="!isOnAddedList()">
+            created
         </div>
 
     </div>
