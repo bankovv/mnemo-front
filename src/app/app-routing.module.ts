@@ -5,6 +5,7 @@ import { RegistrationComponent } from './features/auth/registration/registration
 import { SearchComponent } from './features/search/components/search/search.component';
 import { OpenedDeckComponent } from './features/opened-deck/components/opened-deck/opened-deck.component';
 import { CreateDeckComponent } from './features/create-deck/components/create-deck/create-deck.component';
+import { MyDecksComponent } from './features/my-decks/components/my-decks/my-decks.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   { path: 'search', component: SearchComponent },
+  { path: 'my-decks', component: MyDecksComponent },
 
   { path: 'create-deck', component: CreateDeckComponent },
   { path: 'deck/:publicId', component: OpenedDeckComponent },
