@@ -13,6 +13,7 @@ import { OpenedDeckModule } from './features/opened-deck/opened-deck.module';
 import { CreateDeckModule } from './features/create-deck/create-deck.module';
 import { CreateCardModule } from './features/create-card/create-card.module';
 import { DictationModule } from './features/dictation/dictation.module';
+import { MyDecksModule } from './features/my-decks/my-decks.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DictationModule } from './features/dictation/dictation.module';
     OpenedDeckModule,
     CreateDeckModule,
     CreateCardModule,
-    DictationModule
+    DictationModule,
+    MyDecksModule
 
   ],
   providers: [
