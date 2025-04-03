@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-decks-wrapper {
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 80%;
+  width: 80%;
+
+}
+
+.my-decks-list-select {
+  display: flex;
+  justify-self: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.my-decks-list-select input {
+  display: none;
+}
+
+.my-decks-list-select label {
+
+  background: var(--tertiary);
+
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+.my-decks-list-select label:hover {
+  background: var(--tertiary-hover);
+}
+
+input[type="radio"]:checked + label {
+  background: var(--accent);
+}
+
+.my-decks-list {
+}
