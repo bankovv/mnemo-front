@@ -1,4 +1,6 @@
-const baseUrl = 'http://localhost:8080/api/v1';
+import { API_URL } from "../../../../environments/environment";
+
+const baseUrl = API_URL;
 
 export const API_CONFIG = {
 
