@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
 
-  private static readonly STORAGE_LOCALE_KEY = "locale";
-  private static readonly STORAGE_THEME_KEY = "theme";
+  private static readonly STORAGE_LOCALE_KEY = "mnemo-locale";
+  private static readonly STORAGE_THEME_KEY = "mnemo-theme";
 
   public getUserLocale() {
     return localStorage.getItem(LocalStorageService.STORAGE_LOCALE_KEY);
